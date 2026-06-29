@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FeaturedProjectsSkeleton } from '@/components/shared/Skeleton'
 
 export default function FeaturedProjects() {
@@ -109,45 +110,108 @@ export default function FeaturedProjects() {
             className="flex gap-4 sm:gap-6 transition-transform duration-500 ease-out"
             style={{ transform: mounted ? `translateX(-${currentIndex * (isMobile ? 100 : 33.333)}%)` : 'translateX(0)' }}
           >
-            {projects.map((project: any) => (
-              <motion.div
-                key={project.id}
-                className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[400px] sm:min-h-[480px] p-6 sm:p-8 flex flex-col justify-between relative cursor-pointer bg-black/80 backdrop-blur-xl border border-white/10 shadow-2xl"
-                whileHover={{
-                  scale: 1.02,
-                  backgroundColor: 'rgba(0, 0, 0, 0.95)',
-                  backdropFilter: 'blur(30px)'
-                }}
-              >
-                <div>
-                  <h3 className="text-white text-xl sm:text-2xl font-bold mb-2">{project.title}</h3>
-                  {project.tagline && (
-                    <p className="text-white/90 font-medium mb-4 text-sm sm:text-base">{project.tagline}</p>
-                  )}
-                  {project.stats && (
-                    <p className="text-white font-bold mb-4 text-sm sm:text-base">{project.stats}</p>
-                  )}
-                  <p className="text-white/80 leading-relaxed text-sm sm:text-base">{project.description}</p>
-                </div>
-
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md opacity-0"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="inline-flex items-center gap-2 bg-white text-black rounded-full px-6 sm:px-8 py-3 sm:py-4 font-bold hover:bg-gray-200 transition-all transform hover:scale-105 text-sm sm:text-base"
+            {projects.map((project: any) => {
+              const imageUrl = project.mockupImage || project.coverImage
+              return (
+                <Link key={project.id} href={`/projects/${project.slug}`}>
+                  <motion.div
+                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[400px] sm:min-h-[480px] relative cursor-pointer group"
+                    whileHover={{
+                      scale: 1.03,
+                      y: -8,
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
                   >
-                    View Case Study
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </motion.div>
-              </motion.div>
-            ))}
+                    {/* Background Image */}
+                    {imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300" />
+                    )}
+
+                    {/* Glassmorphism Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                    {/* Content */}
+                    <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                        {/* Category Badge */}
+                        {project.category && (
+                          <div className="inline-block mb-3">
+                            <span className="bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-full px-3 py-1.5">
+                              {project.category}
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Title */}
+                        <h3 className="text-white text-xl sm:text-2xl font-bold mb-2 leading-tight">
+                          {project.title}
+                        </h3>
+
+                        {/* Tagline */}
+                        {project.tagline && (
+                          <p className="text-white/90 font-medium mb-3 text-sm sm:text-base line-clamp-2">
+                            {project.tagline}
+                          </p>
+                        )}
+
+                        {/* Stats */}
+                        {project.stats && project.stats.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.stats.slice(0, 2).map((stat: string, index: number) => (
+                              <span
+                                key={index}
+                                className="bg-lime/20 backdrop-blur-sm border border-lime/30 text-lime text-xs font-semibold rounded-lg px-2.5 py-1"
+                              >
+                                {stat}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Description */}
+                        <p className="text-white/70 text-sm line-clamp-2 mb-4 leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        {/* View Button - Always visible with glass effect */}
+                        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-full px-5 py-2.5 font-semibold text-sm group-hover:bg-white group-hover:text-black transition-all duration-300">
+                          View Project
+                          <svg
+                            className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Shine Effect on Hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        backgroundSize: '200% 200%',
+                      }}
+                    />
+                  </motion.div>
+                </Link>
+              )
+            })}
           </div>
         </div>
       </div>
