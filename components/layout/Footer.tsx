@@ -7,6 +7,10 @@ import { Skeleton } from '@/components/shared/Skeleton'
 export default function Footer() {
   const [settings, setSettings] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const [email, setEmail] = useState('')
+  const [subscribing, setSubscribing] = useState(false)
+  const [subscribeMessage, setSubscribeMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
+  const [csrfToken, setCsrfToken] = useState('')
 
   useEffect(() => {
     fetch('/api/settings')
@@ -22,6 +26,44 @@ export default function Footer() {
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [])
+
+  useEffect(() => {
+    fetch('/api/csrf')
+      .then(res => res.json())
+      .then(data => {
+        if (data.token) setCsrfToken(data.token)
+      })
+      .catch(console.error)
+  }, [])
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || subscribing) return
+
+    setSubscribing(true)
+    setSubscribeMessage(null)
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, csrfToken })
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setSubscribeMessage({ type: 'success', text: 'Successfully subscribed!' })
+        setEmail('')
+      } else {
+        setSubscribeMessage({ type: 'error', text: data.error || 'Subscription failed' })
+      }
+    } catch (error) {
+      setSubscribeMessage({ type: 'error', text: 'Something went wrong' })
+    } finally {
+      setSubscribing(false)
+    }
+  }
 
   if (loading) {
     return (
@@ -197,16 +239,28 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-[#8FA89E] mb-4">
               Subscribe to our newsletter for the latest updates and insights.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2">
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
               <input
                 type="email"
                 placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 bg-[#1A3028] border border-[#1A3028] rounded-lg px-3 sm:px-4 py-2 text-xs sm:text-sm focus:outline-none focus:border-[#B5E12A] transition-colors"
+                required
               />
-              <button className="bg-[#B5E12A] text-[#0D1F1A] px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm hover:bg-[#A3D01F] transition-colors">
-                Subscribe
+              <button
+                type="submit"
+                disabled={subscribing}
+                className="bg-[#B5E12A] text-[#0D1F1A] px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm hover:bg-[#A3D01F] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {subscribing ? 'Subscribing...' : 'Subscribe'}
               </button>
-            </div>
+              {subscribeMessage && (
+                <p className={`text-xs ${subscribeMessage.type === 'success' ? 'text-[#B5E12A]' : 'text-red-400'}`}>
+                  {subscribeMessage.text}
+                </p>
+              )}
+            </form>
           </div>
         </div>
 
