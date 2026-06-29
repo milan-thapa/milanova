@@ -159,7 +159,7 @@ export default function FeaturedProjects() {
               return (
                 <Link key={project.id} href={`/projects/${project.slug}`}>
                   <motion.div
-                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[400px] sm:min-h-[480px] relative cursor-pointer group"
+                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[400px] sm:min-h-[480px] relative cursor-pointer group bg-blue-500 border-4 border-white"
                     whileHover={{
                       scale: 1.03,
                       y: -8,
