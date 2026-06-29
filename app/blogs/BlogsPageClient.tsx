@@ -12,7 +12,14 @@ export default function BlogsPageClient() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch('/api/blogs/categories')
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+        
+        const response = await fetch('/api/blogs/categories', {
+          signal: controller.signal
+        })
+        clearTimeout(timeoutId)
+        
         const data = await response.json()
         setCategories(['All Stories', ...data])
       } catch (error) {
@@ -25,7 +32,7 @@ export default function BlogsPageClient() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-cream to-white">
+    <div className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#082E23] py-24 md:py-32" style={{ borderBottomLeftRadius: '80px', borderBottomRightRadius: '80px' }}>
         <div className="max-w-7xl mx-auto px-6 relative">
@@ -75,6 +82,6 @@ export default function BlogsPageClient() {
           <BlogGrid category={selectedCategory === 'All Stories' ? undefined : selectedCategory} />
         </div>
       </section>
-    </main>
+    </div>
   )
 }
