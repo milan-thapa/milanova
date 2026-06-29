@@ -70,17 +70,6 @@ export default function LoginPage() {
               Continue with Google
             </Button>
           </form>
-
-          <p className="mt-8 text-center text-xs text-gray-500">
-            By clicking continue, you agree to our{' '}
-            <Link href="#" className="text-gray-400 hover:text-white hover:underline">
-              Terms of Service
-            </Link>{' '}
-            and{' '}
-            <Link href="#" className="text-gray-400 hover:text-white hover:underline">
-              Privacy Policy
-            </Link>
-          </p>
         </motion.div>
       </div>
     </div>
