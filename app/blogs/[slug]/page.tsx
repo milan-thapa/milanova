@@ -104,8 +104,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
           { name: blog.title, item: `https://milanova.com/blogs/${blog.slug}` },
         ]}
       />
+      {/* Curved Green Background for Navbar */}
+      <div className="bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]" />
+      
       {/* Hero Header */}
-      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="relative pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-b from-gray-50 to-white">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-10 w-72 h-72 bg-[#B5E12A]/5 rounded-full blur-3xl" />
