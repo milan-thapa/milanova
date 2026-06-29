@@ -31,7 +31,49 @@ export default function FeaturedProjects() {
         console.log('Response status:', response.status)
         const data = await response.json()
         console.log('Projects data:', data)
-        setProjects(data)
+        
+        // Temporarily add mock data if no projects exist
+        if (!data || data.length === 0) {
+          console.log('No projects found, using mock data')
+          const mockProjects = [
+            {
+              id: '1',
+              title: 'E-Commerce Platform',
+              tagline: 'Modern shopping experience',
+              description: 'A full-featured e-commerce platform with advanced features',
+              category: 'eCommerce',
+              stats: ['50K+ Users', '99.9% Uptime'],
+              slug: 'ecommerce-platform',
+              coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
+              mockupImage: null,
+            },
+            {
+              id: '2',
+              title: 'SaaS Dashboard',
+              tagline: 'Analytics made simple',
+              description: 'Real-time analytics dashboard for business intelligence',
+              category: 'SaaS',
+              stats: ['10K+ Active Users', '24/7 Support'],
+              slug: 'saas-dashboard',
+              coverImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800',
+              mockupImage: null,
+            },
+            {
+              id: '3',
+              title: 'Mobile Banking App',
+              tagline: 'Banking at your fingertips',
+              description: 'Secure and intuitive mobile banking application',
+              category: 'Mobile App',
+              stats: ['100K+ Downloads', '4.9 Rating'],
+              slug: 'mobile-banking',
+              coverImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800',
+              mockupImage: null,
+            },
+          ]
+          setProjects(mockProjects)
+        } else {
+          setProjects(data)
+        }
       } catch (error) {
         console.error('Error fetching projects:', error)
       } finally {
