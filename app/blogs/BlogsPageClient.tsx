@@ -16,7 +16,7 @@ export default function BlogsPageClient() {
         const data = await response.json()
         setCategories(['All Stories', ...data])
       } catch (error) {
-        console.error('Error fetching categories:', error)
+        // Silently fail - will show "No categories available"
       } finally {
         setLoading(false)
       }

@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import BlogCard from './BlogCard'
+import { logError } from '@/lib/logger'
 
 interface BlogGridProps {
   category?: string
@@ -8,32 +9,35 @@ interface BlogGridProps {
 export default async function BlogGrid({ category }: BlogGridProps) {
   let blogs: any[] = []
 
-  if (category && category !== 'All Stories') {
-    // Filter by category name
-    const categoryRecord = await prisma.category.findUnique({
-      where: { name: category }
-    })
+  try {
+    if (category && category !== 'All Stories') {
+      // Filter by category name
+      const categoryRecord = await prisma.category.findUnique({
+        where: { name: category }
+      })
 
-    if (categoryRecord) {
+      if (categoryRecord) {
+        blogs = await prisma.blog.findMany({
+          where: { categoryId: categoryRecord.id },
+          orderBy: { publishedAt: 'desc' },
+          include: {
+            categoryRel: true,
+            authorRel: true
+          }
+        })
+      }
+    } else {
       blogs = await prisma.blog.findMany({
-        where: { categoryId: categoryRecord.id },
         orderBy: { publishedAt: 'desc' },
         include: {
           categoryRel: true,
           authorRel: true
         }
       })
-    } else {
-      blogs = []
     }
-  } else {
-    blogs = await prisma.blog.findMany({
-      orderBy: { publishedAt: 'desc' },
-      include: {
-        categoryRel: true,
-        authorRel: true
-      }
-    })
+  } catch (error) {
+    logError('Error fetching blogs', { error, category })
+    blogs = []
   }
 
   if (blogs.length === 0) {
