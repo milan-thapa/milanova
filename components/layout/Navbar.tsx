@@ -84,12 +84,9 @@ export default function Navbar() {
                   href={link.href}
                   className={`
                     relative text-sm font-medium tracking-wide
-                    text-white/80 hover:text-white
+                    text-white/80 hover:text-lime
                     transition-colors duration-200
-                    after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0
-                    after:bg-lime after:transition-all after:duration-300
-                    hover:after:w-full
-                    ${pathname === link.href ? 'text-white after:w-full' : ''}
+                    ${pathname === link.href ? 'text-lime' : ''}
                   `}
                 >
                   {link.name}
@@ -142,12 +139,9 @@ export default function Navbar() {
                   href={link.href}
                   className={`
                     relative text-sm font-medium
-                    text-gray-700 hover:text-black
+                    text-gray-700 hover:text-teal
                     transition-colors duration-200
-                    after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0
-                    after:bg-teal after:transition-all after:duration-300
-                    hover:after:w-full
-                    ${pathname === link.href ? 'text-black after:w-full' : ''}
+                    ${pathname === link.href ? 'text-teal' : ''}
                   `}
                 >
                   {link.name}
