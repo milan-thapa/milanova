@@ -120,15 +120,15 @@ export default function Navbar() {
           <div
             className="
               flex items-center justify-between
-              bg-gradient-to-b from-white/90 to-white/70
+              bg-[#082E23]
               backdrop-blur-2xl
-              border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)]
+              border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)]
               rounded-[1.5rem] sm:rounded-[2rem] px-4 sm:px-6 h-14 sm:h-16
             "
           >
             {/* Logo */}
             <Link href="/" className="group flex items-center gap-1 sm:gap-1.5">
-              <span className="text-black font-bold text-base sm:text-lg tracking-tight">Milanova</span>
+              <span className="text-white font-bold text-base sm:text-lg tracking-tight">Milanova</span>
             </Link>
 
             {/* Desktop Links */}
@@ -139,9 +139,9 @@ export default function Navbar() {
                   href={link.href}
                   className={`
                     relative text-sm font-medium
-                    text-gray-700 hover:text-teal
+                    text-white/80 hover:text-lime
                     transition-colors duration-200
-                    ${pathname === link.href ? 'text-teal' : ''}
+                    ${pathname === link.href ? 'text-lime' : ''}
                   `}
                 >
                   {link.name}
@@ -151,11 +151,11 @@ export default function Navbar() {
 
             {/* CTA */}
             <div className="hidden lg:flex">
-              <WhatsAppButton variant="solid" />
+              <WhatsAppButton variant="outline" />
             </div>
 
             {/* Mobile Hamburger */}
-            <MobileMenuButton open={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} />
+            <MobileMenuButton open={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} light />
           </div>
         </div>
       </nav>
