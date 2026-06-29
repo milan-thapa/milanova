@@ -148,11 +148,13 @@ export default function FeaturedProjects() {
 
         {/* Carousel */}
         <div className="overflow-hidden">
+          <div className="text-white text-xl mb-4">Projects count: {projects.length}</div>
           <div
             className="flex gap-4 sm:gap-6 transition-transform duration-500 ease-out"
             style={{ transform: mounted ? `translateX(-${currentIndex * (isMobile ? 100 : 33.333)}%)` : 'translateX(0)' }}
           >
-            {projects.map((project: any) => {
+            {projects.map((project: any, index: number) => {
+              console.log('Rendering project card:', index, project.title)
               const imageUrl = project.mockupImage || project.coverImage
               return (
                 <Link key={project.id} href={`/projects/${project.slug}`}>
