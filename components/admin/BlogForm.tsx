@@ -64,6 +64,7 @@ export default function BlogForm({ blog }: { blog?: Blog }) {
     fetchCategories()
     fetchAuthors()
     fetchAllBlogs()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const fetchCategories = async () => {

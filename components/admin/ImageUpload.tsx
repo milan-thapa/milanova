@@ -47,6 +47,7 @@ export function ImageUpload({
     } else {
       setError('Please drop an image file')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
