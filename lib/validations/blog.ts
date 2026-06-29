@@ -10,7 +10,7 @@ export const blogSchema = z.object({
   authorId: z.string().optional(),
   publishedAt: z.string().or(z.date()),
   coverImage: z.string().optional(),
-  readingTime: z.number().int().min(1).max(60).default(5),
+  // readingTime is auto-calculated from content, no longer needed in validation
 })
 
 export type BlogInput = z.infer<typeof blogSchema>

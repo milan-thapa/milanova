@@ -11,6 +11,7 @@ import RichTextEditor from './RichTextEditor'
 import { ImageUpload } from '@/components/admin/ImageUpload'
 import TagInput from '@/components/admin/TagInput'
 import { toast } from 'sonner'
+import { calculateReadingTime } from '@/lib/reading-time'
 
 interface Category {
   id: string
@@ -56,9 +57,11 @@ export default function BlogForm({ blog }: { blog?: Blog }) {
     tags: blog?.tags || [],
     publishedAt: blog?.publishedAt ? new Date(blog.publishedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
     coverImage: blog?.coverImage || '',
-    readingTime: blog?.readingTime || 5,
     relatedPosts: [] as string[],
   })
+
+  // Calculate reading time on the fly for preview
+  const calculatedReadingTime = calculateReadingTime(formData.content || '')
 
   useEffect(() => {
     fetchCategories()
@@ -124,7 +127,6 @@ export default function BlogForm({ blog }: { blog?: Blog }) {
           ...formData,
           tags: formData.tags,
           publishedAt: new Date(formData.publishedAt),
-          readingTime: Number(formData.readingTime),
           categoryId: formData.categoryId || null,
           authorId: formData.authorId || null,
           relatedPosts: formData.relatedPosts,
@@ -240,7 +242,7 @@ export default function BlogForm({ blog }: { blog?: Blog }) {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>{formData.readingTime} min read</span>
+                  <span>{calculatedReadingTime} min read</span>
                 </div>
               </div>
 
@@ -333,7 +335,7 @@ export default function BlogForm({ blog }: { blog?: Blog }) {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="categoryId">Category</Label>
               <select
@@ -365,15 +367,6 @@ export default function BlogForm({ blog }: { blog?: Blog }) {
                   </option>
                 ))}
               </select>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="readingTime">Reading Time (min)</Label>
-              <Input
-                id="readingTime"
-                type="number"
-                value={formData.readingTime}
-                onChange={(e) => setFormData({ ...formData, readingTime: parseInt(e.target.value) || 5 })}
-              />
             </div>
           </div>
 

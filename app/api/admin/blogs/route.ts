@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { logError } from "@/lib/logger"
+import { calculateReadingTime } from "@/lib/reading-time"
 
 export async function GET() {
   try {
@@ -40,6 +41,9 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { categoryId, authorId, relatedPosts, ...rest } = body
 
+    // Auto-calculate reading time from content
+    const calculatedReadingTime = calculateReadingTime(rest.content || '')
+
     const blog = await prisma.blog.create({
       data: {
         title: rest.title,
@@ -49,7 +53,7 @@ export async function POST(request: Request) {
         tags: rest.tags || [],
         publishedAt: rest.publishedAt ? new Date(rest.publishedAt) : new Date(),
         coverImage: rest.coverImage || "",
-        readingTime: rest.readingTime || 0,
+        readingTime: calculatedReadingTime,
         categoryId: categoryId || null,
         authorId: authorId || null,
         relatedPosts: relatedPosts && relatedPosts.length > 0 ? {
@@ -77,6 +81,9 @@ export async function PUT(request: Request) {
     const body = await request.json()
     const { id, categoryId, authorId, relatedPosts, ...rest } = body
 
+    // Auto-calculate reading time from content
+    const calculatedReadingTime = calculateReadingTime(rest.content || '')
+
     // First, delete existing related posts
     await prisma.blogRelatedPost.deleteMany({
       where: { blogId: id }
@@ -92,7 +99,7 @@ export async function PUT(request: Request) {
         tags: rest.tags || [],
         publishedAt: rest.publishedAt ? new Date(rest.publishedAt) : new Date(),
         coverImage: rest.coverImage || "",
-        readingTime: rest.readingTime || 0,
+        readingTime: calculatedReadingTime,
         categoryId: categoryId || null,
         authorId: authorId || null,
         relatedPosts: relatedPosts && relatedPosts.length > 0 ? {
