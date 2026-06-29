@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
+import { logError } from '@/lib/logger'
 
 // DELETE contact submission
 export async function DELETE(
@@ -19,7 +20,7 @@ export async function DELETE(
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error deleting contact submission:', error)
+    logError('Error deleting contact submission', { error })
     return NextResponse.json({ error: 'Failed to delete submission' }, { status: 500 })
   }
 }

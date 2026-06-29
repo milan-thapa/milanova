@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
+import { logError } from '@/lib/logger'
 
 // GET all authors
 export async function GET() {
@@ -15,7 +16,7 @@ export async function GET() {
     })
     return NextResponse.json(authors)
   } catch (error) {
-    console.error('Error fetching authors:', error)
+    logError('Error fetching authors', { error })
     return NextResponse.json({ error: 'Failed to fetch authors' }, { status: 500 })
   }
 }
@@ -48,7 +49,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(author)
   } catch (error) {
-    console.error('Error creating author:', error)
+    logError('Error creating author', { error })
     return NextResponse.json({ error: 'Failed to create author' }, { status: 500 })
   }
 }

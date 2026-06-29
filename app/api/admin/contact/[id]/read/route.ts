@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
+import { logError } from '@/lib/logger'
 
 // PUT mark contact submission as read
 export async function PUT(
@@ -20,7 +21,7 @@ export async function PUT(
 
     return NextResponse.json(submission)
   } catch (error) {
-    console.error('Error marking contact submission as read:', error)
+    logError('Error marking contact submission as read', { error })
     return NextResponse.json({ error: 'Failed to mark as read' }, { status: 500 })
   }
 }

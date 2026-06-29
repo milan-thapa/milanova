@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
+import { logError } from '@/lib/logger'
 
 // GET all categories
 export async function GET() {
@@ -15,7 +16,7 @@ export async function GET() {
     })
     return NextResponse.json(categories)
   } catch (error) {
-    console.error('Error fetching categories:', error)
+    logError('Error fetching categories', { error })
     return NextResponse.json({ error: 'Failed to fetch categories' }, { status: 500 })
   }
 }
@@ -43,7 +44,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(category)
   } catch (error) {
-    console.error('Error creating category:', error)
+    logError('Error creating category', { error })
     return NextResponse.json({ error: 'Failed to create category' }, { status: 500 })
   }
 }
