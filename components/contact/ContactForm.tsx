@@ -81,8 +81,8 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero section with green background for navbar */}
-      <div className="bg-[#0D2B22] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]"></div>
+      {/* Hero section with green gradient background for navbar */}
+      <div className="bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">

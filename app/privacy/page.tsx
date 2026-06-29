@@ -11,8 +11,11 @@ export const metadata: Metadata = {
 export default function PrivacyPolicy() {
   return (
     <main className="min-h-screen bg-white">
+      {/* Curved Green Background for Navbar */}
+      <div className="bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]" />
+      
       {/* Hero */}
-      <section className="relative py-20 sm:py-24 md:py-32 bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A]">
+      <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A]">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 right-10 w-72 h-72 bg-[#B5E12A]/10 rounded-full blur-3xl" />
