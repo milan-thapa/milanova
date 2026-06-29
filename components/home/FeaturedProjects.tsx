@@ -26,8 +26,11 @@ export default function FeaturedProjects() {
   useEffect(() => {
     async function fetchProjects() {
       try {
+        console.log('Fetching projects...')
         const response = await fetch('/api/projects')
+        console.log('Response status:', response.status)
         const data = await response.json()
+        console.log('Projects data:', data)
         setProjects(data)
       } catch (error) {
         console.error('Error fetching projects:', error)
@@ -46,7 +49,10 @@ export default function FeaturedProjects() {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length)
   }
 
+  console.log('FeaturedProjects state:', { loading, projectsLength: projects.length, projects })
+
   if (loading) {
+    console.log('Showing loading state')
     return (
       <section className="py-12 sm:py-16 md:py-20 bg-[#F4F9F4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
@@ -57,6 +63,7 @@ export default function FeaturedProjects() {
   }
 
   if (projects.length === 0) {
+    console.log('No projects found')
     return (
       <section className="py-20 bg-[#F4F9F4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
