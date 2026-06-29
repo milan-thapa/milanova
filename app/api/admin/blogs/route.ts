@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
+import { logError } from "@/lib/logger"
 
 export async function GET() {
   try {
@@ -24,7 +25,7 @@ export async function GET() {
 
     return NextResponse.json(blogs)
   } catch (error) {
-    console.error("Error fetching blogs:", error)
+    logError("Error fetching blogs", { error })
     return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 })
   }
 }
@@ -61,7 +62,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(blog)
   } catch (error) {
-    console.error("Error creating blog:", error)
+    logError("Error creating blog", { error })
     return NextResponse.json({ error: "Failed to create blog" }, { status: 500 })
   }
 }
@@ -104,7 +105,7 @@ export async function PUT(request: Request) {
 
     return NextResponse.json(blog)
   } catch (error) {
-    console.error("Error updating blog:", error)
+    logError("Error updating blog", { error })
     return NextResponse.json({ error: "Failed to update blog" }, { status: 500 })
   }
 }
@@ -129,7 +130,7 @@ export async function DELETE(request: Request) {
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("Error deleting blog:", error)
+    logError("Error deleting blog", { error })
     return NextResponse.json({ error: "Failed to delete blog" }, { status: 500 })
   }
 }
