@@ -37,20 +37,30 @@ export default function BlogsPageClient() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 bg-white border-b border-gray-100 sticky top-0 z-10 backdrop-blur-sm bg-white/95">
+      <section className="py-6 bg-white border-b border-gray-100 sticky top-0 z-10 backdrop-blur-md bg-white/95 shadow-sm">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`whitespace-nowrap rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ${
+                className={`whitespace-nowrap rounded-2xl px-6 py-3 text-sm font-semibold transition-all duration-300 relative group ${
                   selectedCategory === category
-                    ? 'bg-teal text-white shadow-lg shadow-teal/30 scale-105'
-                    : 'bg-white border border-gray-200 text-text-body hover:border-teal hover:text-teal'
+                    ? 'bg-gradient-to-r from-teal to-teal/90 text-white shadow-lg shadow-teal/25 scale-105'
+                    : 'bg-white border-2 border-gray-200 text-text-body hover:border-teal hover:text-teal hover:shadow-md'
                 }`}
               >
-                {category}
+                <span className="relative z-10 flex items-center gap-2">
+                  {selectedCategory === category && (
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                  {category}
+                </span>
+                {selectedCategory === category && (
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal to-lime opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                )}
               </button>
             ))}
           </div>
