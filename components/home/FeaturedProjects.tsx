@@ -105,17 +105,102 @@ export default function FeaturedProjects() {
         </div>
 
         {/* Carousel */}
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project: any, index: number) => {
             const imageUrl = project.mockupImage || project.coverImage
-            console.log('Project image URL:', imageUrl, 'for project:', project.title)
             return (
               <Link key={project.id} href={`/projects/${project.slug}`}>
-                <div className="rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[520px] relative cursor-pointer shadow-2xl bg-purple-600 border-4 border-yellow-400 p-8">
-                  <div className="text-white text-3xl font-bold">{project.title}</div>
-                  <div className="text-white text-xl mt-4">{project.description}</div>
-                  {imageUrl && <div className="text-yellow-300 mt-4 text-sm">Image: {imageUrl}</div>}
-                </div>
+                <motion.div
+                  className="rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[520px] relative cursor-pointer group shadow-2xl"
+                  whileHover={{
+                    scale: 1.02,
+                    y: -8,
+                  }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  {/* Background Image */}
+                  {imageUrl ? (
+                    <Image
+                      src={imageUrl}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
+                      priority={index < 2}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
+                  )}
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-transparent to-transparent opacity-90" />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                      {/* Category Badge */}
+                      {project.category && (
+                        <div className="inline-block mb-3">
+                          <span className="bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-wider rounded-full px-4 py-1.5 shadow-lg">
+                            {project.category}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Title */}
+                      <h3 className="text-white text-xl sm:text-2xl lg:text-3xl font-bold mb-2 leading-tight drop-shadow-lg">
+                        {project.title}
+                      </h3>
+
+                      {/* Tagline */}
+                      {project.tagline && (
+                        <p className="text-white/95 font-medium mb-3 text-sm sm:text-base line-clamp-2 drop-shadow-md">
+                          {project.tagline}
+                        </p>
+                      )}
+
+                      {/* Stats */}
+                      {project.stats && project.stats.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.stats.slice(0, 2).map((stat: string, statIndex: number) => (
+                            <span
+                              key={statIndex}
+                              className="bg-lime/30 backdrop-blur-sm border border-lime/40 text-lime text-xs font-semibold rounded-lg px-3 py-1.5 shadow-md"
+                            >
+                              {stat}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Description */}
+                      <p className="text-white/80 text-sm line-clamp-2 mb-5 leading-relaxed drop-shadow-sm">
+                        {project.description}
+                      </p>
+
+                      {/* View Button */}
+                      <div className="inline-flex items-center gap-2 bg-white text-black rounded-full px-6 py-3 font-semibold text-sm shadow-xl group-hover:bg-lime group-hover:scale-105 transition-all duration-300">
+                        View Project
+                        <svg
+                          className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Shine Effect on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                </motion.div>
               </Link>
             )
           })}
