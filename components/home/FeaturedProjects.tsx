@@ -124,7 +124,7 @@ export default function FeaturedProjects() {
                       src={imageUrl}
                       alt={project.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover blur-sm transition-all duration-700 group-hover:blur-xl group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
                       priority={index < 2}
                     />
@@ -133,7 +133,7 @@ export default function FeaturedProjects() {
                   )}
 
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-transparent to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 via-transparent to-transparent opacity-95 transition-all duration-500 group-hover:opacity-100 group-hover:backdrop-blur-sm" />
 
                   {/* Content */}
                   <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
@@ -142,6 +142,7 @@ export default function FeaturedProjects() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="transition-opacity duration-300 group-hover:opacity-30"
                     >
                       {/* Category Badge */}
                       {project.category && (
@@ -182,12 +183,25 @@ export default function FeaturedProjects() {
                       <p className="text-white/80 text-sm line-clamp-2 mb-5 leading-relaxed drop-shadow-sm">
                         {project.description}
                       </p>
+                    </motion.div>
+                  </div>
 
-                      {/* View Button */}
-                      <div className="inline-flex items-center gap-2 bg-white text-black rounded-full px-6 py-3 font-semibold text-sm shadow-xl group-hover:bg-lime group-hover:scale-105 transition-all duration-300">
+                  {/* Hover Overlay with Center Button */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md opacity-0"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      whileHover={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      <div className="inline-flex items-center gap-2 bg-white text-black rounded-full px-8 py-4 font-bold text-sm shadow-2xl hover:bg-lime transition-all duration-300">
                         View Project
                         <svg
-                          className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                          className="w-4 h-4"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -196,7 +210,7 @@ export default function FeaturedProjects() {
                         </svg>
                       </div>
                     </motion.div>
-                  </div>
+                  </motion.div>
 
                   {/* Shine Effect on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
