@@ -93,31 +93,24 @@ export default function FeaturedProjects() {
 
   console.log('FeaturedProjects state:', { loading, projectsLength: projects.length, projects })
 
+  // Temporary: Always show content for debugging
+  console.log('Rendering featured projects section')
+
   if (loading) {
     console.log('Showing loading state')
     return (
       <section className="py-12 sm:py-16 md:py-20 bg-[#F4F9F4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-          <FeaturedProjectsSkeleton />
-        </div>
-      </section>
-    )
-  }
-
-  if (projects.length === 0) {
-    console.log('No projects found')
-    return (
-      <section className="py-20 bg-[#F4F9F4]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="text-center py-12 text-[#8FA89E]">No featured projects available at the moment.</div>
+          <div className="text-center py-12">Loading projects...</div>
         </div>
       </section>
     )
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#F4F9F4]">
+    <section className="py-12 sm:py-16 md:py-20 bg-red-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="text-white text-2xl font-bold mb-4">DEBUG: Featured Projects Section</div>
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-12">
           <div>
