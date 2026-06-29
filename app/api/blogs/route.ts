@@ -35,7 +35,15 @@ export async function GET(request: Request) {
       })
     }
 
-    return NextResponse.json(blogs)
+    // Serialize dates to strings
+    const serializedBlogs = blogs.map(blog => ({
+      ...blog,
+      publishedAt: blog.publishedAt.toISOString(),
+      createdAt: blog.createdAt?.toISOString(),
+      updatedAt: blog.updatedAt?.toISOString(),
+    }))
+
+    return NextResponse.json(serializedBlogs)
   } catch (error) {
     logError("Error fetching blogs", { error })
     return NextResponse.json({ error: "Failed to fetch blogs" }, { status: 500 })
