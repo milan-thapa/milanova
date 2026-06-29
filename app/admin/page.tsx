@@ -29,7 +29,16 @@ async function getContentByCategory() {
     _count: true,
   })
 
-  return { projectsByCategory, blogsByCategory }
+  // Filter out null categories and ensure name is string
+  const projectChartData = projectsByCategory
+    .filter(item => item.category !== null)
+    .map(item => ({ name: item.category as string, count: item._count }))
+
+  const blogChartData = blogsByCategory
+    .filter(item => item.category !== null)
+    .map(item => ({ name: item.category as string, count: item._count }))
+
+  return { projectChartData, blogChartData }
 }
 
 async function getRecentContent() {
@@ -56,7 +65,7 @@ export default async function AdminDashboard() {
   }
 
   const stats = await getStats()
-  const { projectsByCategory, blogsByCategory } = await getContentByCategory()
+  const { projectChartData, blogChartData } = await getContentByCategory()
   const { recentProjects, recentBlogs } = await getRecentContent()
 
   const statCards = [
@@ -93,16 +102,6 @@ export default async function AdminDashboard() {
       href: "/admin/contact",
     },
   ]
-
-  const projectChartData = projectsByCategory.map(item => ({
-    name: item.category,
-    count: item._count,
-  }))
-
-  const blogChartData = blogsByCategory.map(item => ({
-    name: item.category,
-    count: item._count,
-  }))
 
   return (
     <div className="flex min-h-screen bg-gray-50">
