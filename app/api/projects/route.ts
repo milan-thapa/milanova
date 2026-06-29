@@ -5,11 +5,16 @@ import { logError } from "@/lib/logger"
 export async function GET() {
   try {
     const projects = await prisma.project.findMany({
-      where: { isFeatured: true },
       orderBy: { createdAt: 'desc' }
     })
 
-    return NextResponse.json(projects)
+    // Serialize dates to strings
+    const serializedProjects = projects.map(project => ({
+      ...project,
+      createdAt: project.createdAt?.toISOString(),
+    }))
+
+    return NextResponse.json(serializedProjects)
   } catch (error) {
     logError("Error fetching projects", { error })
     return NextResponse.json({ error: "Failed to fetch projects" }, { status: 500 })
