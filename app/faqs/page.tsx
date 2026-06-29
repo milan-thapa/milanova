@@ -59,20 +59,26 @@ export default function FAQsPage() {
 
   return (
     <main className="bg-white min-h-screen">
-      <section className="py-20 bg-hero-dark">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="relative py-20 sm:py-24 md:py-32 bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A]">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-[#B5E12A]/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#1A6B55]/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 text-center relative z-10">
           <SectionEyebrow label="FAQ's" />
-          <h1 className="text-white text-4xl md:text-5xl font-extrabold mb-4">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6">
             Frequently Asked Questions
           </h1>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto">
+          <p className="text-white/90 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             Web Development Nepal - We excel at turning challenges into innovative solutions effortlessly.
           </p>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
+      <section className="py-20 sm:py-24 md:py-32">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="space-y-0">
             {faqs.map((faq) => (
               <div
@@ -83,9 +89,9 @@ export default function FAQsPage() {
               >
                 <button
                   onClick={() => toggleFAQ(faq.id)}
-                  className="w-full flex items-center justify-between py-6 px-4 text-left"
+                  className="w-full flex items-center justify-between py-6 sm:py-8 px-4 sm:px-6 text-left"
                 >
-                  <span className="text-text-dark font-semibold text-lg pr-4">
+                  <span className="text-text-dark font-semibold text-base sm:text-lg md:text-xl pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -117,8 +123,8 @@ export default function FAQsPage() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 pb-6">
-                        <p className="text-text-body text-base leading-relaxed">
+                      <div className="px-4 sm:px-6 pb-6 sm:pb-8">
+                        <p className="text-text-body text-sm sm:text-base md:text-lg leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>

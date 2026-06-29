@@ -10,36 +10,57 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-cream to-white py-16 md:py-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-text-dark mb-8">Privacy Policy</h1>
-        <p className="text-text-muted mb-8">Last updated: June 28, 2026</p>
+    <main className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="relative py-20 sm:py-24 md:py-32 bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A]">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 right-10 w-72 h-72 bg-[#B5E12A]/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#1A6B55]/10 rounded-full blur-3xl" />
+        </div>
 
-        <div className="prose prose-lg max-w-none">
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">1. Introduction</h2>
-            <p className="text-text-body mb-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 text-center relative z-10">
+          <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
+            <span className="text-white/90 text-sm font-medium tracking-wide">LEGAL</span>
+          </div>
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+            Privacy Policy
+          </h1>
+          <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Learn how we collect, use, and protect your personal data in compliance with GDPR.
+          </p>
+        </div>
+      </section>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 py-16 sm:py-20 md:py-24">
+        <p className="text-[#8FA89E] mb-8 sm:mb-12 text-sm sm:text-base">Last updated: June 28, 2026</p>
+
+        <div className="prose prose-lg max-w-none prose-headings:text-[#0D1F1A] prose-headings:font-bold prose-p:text-[#3A4A44] prose-li:text-[#3A4A44]">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">1. Introduction</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               Milanova (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website milanova.com and use our services.
             </p>
-            <p className="text-text-body">
+            <p className="text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               This policy is compliant with the General Data Protection Regulation (GDPR) and other applicable data protection laws.
             </p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">2. Information We Collect</h2>
-            <h3 className="text-xl font-semibold text-text-dark mb-2">2.1 Personal Data</h3>
-            <p className="text-text-body mb-4">We may collect the following personal information:</p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">2. Information We Collect</h2>
+            <h3 className="text-lg sm:text-xl font-semibold text-[#0D1F1A] mb-2">2.1 Personal Data</h3>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">We may collect the following personal information:</p>
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li>Name and contact information (email, phone)</li>
               <li>Project details and inquiries</li>
               <li>Authentication data (Google OAuth information)</li>
               <li>Usage data and preferences</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-text-dark mb-2">2.2 Technical Data</h3>
-            <p className="text-text-body mb-4">We automatically collect:</p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-[#0D1F1A] mb-2">2.2 Technical Data</h3>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">We automatically collect:</p>
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li>IP address and browser type</li>
               <li>Device information</li>
               <li>Referring website</li>
@@ -47,10 +68,10 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">3. How We Use Your Information</h2>
-            <p className="text-text-body mb-4">We use your information for:</p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">3. How We Use Your Information</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">We use your information for:</p>
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li>Providing and improving our services</li>
               <li>Responding to your inquiries and requests</li>
               <li>Sending you relevant communications (with your consent)</li>
@@ -59,10 +80,10 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">4. Legal Basis for Processing</h2>
-            <p className="text-text-body mb-4">We process your data based on:</p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">4. Legal Basis for Processing</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">We process your data based on:</p>
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li><strong>Consent:</strong> When you voluntarily provide information</li>
               <li><strong>Contractual Necessity:</strong> To fulfill our services</li>
               <li><strong>Legal Obligation:</strong> To comply with applicable laws</li>
@@ -70,33 +91,33 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">5. Data Sharing and Disclosure</h2>
-            <p className="text-text-body mb-4">We may share your data with:</p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">5. Data Sharing and Disclosure</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">We may share your data with:</p>
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li><strong>Service Providers:</strong> Cloudinary (image storage), Resend (email services), Google (authentication)</li>
               <li><strong>Legal Authorities:</strong> When required by law</li>
               <li><strong>Business Transfers:</strong> In case of merger or acquisition</li>
             </ul>
-            <p className="text-text-body">We never sell your personal data to third parties.</p>
+            <p className="text-[#3A4A44] text-sm sm:text-base leading-relaxed">We never sell your personal data to third parties.</p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">6. Data Retention</h2>
-            <p className="text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">6. Data Retention</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               We retain your data only as long as necessary for the purposes outlined in this policy. Personal data is typically retained for:
             </p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li>Contact submissions: 2 years</li>
               <li>User accounts: Until account deletion</li>
               <li>Analytics data: 26 months</li>
             </ul>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">7. Your GDPR Rights</h2>
-            <p className="text-text-body mb-4">Under GDPR, you have the right to:</p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">7. Your GDPR Rights</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">Under GDPR, you have the right to:</p>
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li><strong>Access:</strong> Request a copy of your personal data</li>
               <li><strong>Rectification:</strong> Correct inaccurate or incomplete data</li>
               <li><strong>Erasure:</strong> Request deletion of your data (&quot;Right to be Forgotten&quot;)</li>
@@ -104,17 +125,17 @@ export default function PrivacyPolicy() {
               <li><strong>Objection:</strong> Object to processing of your data</li>
               <li><strong>Restriction:</strong> Request restriction of processing</li>
             </ul>
-            <p className="text-text-body">
+            <p className="text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               To exercise these rights, contact us at privacy@milanova.com
             </p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">8. Data Security</h2>
-            <p className="text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">8. Data Security</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               We implement appropriate technical and organizational measures to protect your data, including:
             </p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li>Encryption of data in transit and at rest</li>
               <li>Secure authentication mechanisms</li>
               <li>Regular security audits</li>
@@ -122,45 +143,45 @@ export default function PrivacyPolicy() {
             </ul>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">9. International Data Transfers</h2>
-            <p className="text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">9. International Data Transfers</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               Your data may be transferred to and processed in countries other than Nepal. We ensure adequate protection through:
             </p>
-            <ul className="list-disc pl-6 text-text-body mb-4">
+            <ul className="list-disc pl-6 text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               <li>Standard Contractual Clauses (SCCs)</li>
               <li>EU-US Data Privacy Framework (if applicable)</li>
               <li>Adequacy decisions by the European Commission</li>
             </ul>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">10. Cookies</h2>
-            <p className="text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">10. Cookies</h2>
+            <p className="text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               We use cookies to enhance your experience. For detailed information, please refer to our Cookie Policy.
             </p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">11. Children's Privacy</h2>
-            <p className="text-text-body">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">11. Children's Privacy</h2>
+            <p className="text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               Our services are not intended for children under 16. We do not knowingly collect personal data from children.
             </p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">12. Changes to This Policy</h2>
-            <p className="text-text-body">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">12. Changes to This Policy</h2>
+            <p className="text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               We may update this policy from time to time. We will notify you of significant changes by email or through our website.
             </p>
           </section>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-text-dark mb-4">13. Contact Us</h2>
-            <p className="text-text-body mb-4">
+          <section className="mb-8 sm:mb-12">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#0D1F1A] mb-4">13. Contact Us</h2>
+            <p className="text-[#3A4A44] mb-4 text-sm sm:text-base leading-relaxed">
               If you have questions about this Privacy Policy or your data rights, contact us:
             </p>
-            <ul className="list-none text-text-body">
+            <ul className="list-none text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               <li><strong>Email:</strong> privacy@milanova.com</li>
               <li><strong>Address:</strong> Kathmandu, Nepal</li>
               <li><strong>Phone:</strong> +977-9801816685</li>
