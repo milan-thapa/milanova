@@ -205,30 +205,47 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedBlogs.map((relatedBlog) => (
                   <Link key={relatedBlog.id} href={`/blogs/${relatedBlog.slug}`} className="group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                      {relatedBlog.coverImage && (
-                        <div className="aspect-video relative">
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-teal/30">
+                      <div className="aspect-video relative bg-gradient-to-br from-off-white to-cream">
+                        {relatedBlog.coverImage ? (
                           <Image
                             src={relatedBlog.coverImage}
                             alt={relatedBlog.title}
                             fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
-                        </div>
-                      )}
-                      <div className="p-4">
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-teal/10 to-lime/20 flex items-center justify-center">
+                            <svg className="w-16 h-16 text-teal/40" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-5">
                         {relatedBlog.categoryRel && (
-                          <span className="text-teal text-xs font-semibold uppercase tracking-wider mb-2 block">
+                          <span className="inline-block bg-lime/20 text-teal text-xs font-bold uppercase tracking-wider rounded-full px-3 py-1 mb-3">
                             {relatedBlog.categoryRel.name}
                           </span>
                         )}
-                        <h3 className="font-bold text-text-dark mb-2 line-clamp-2 group-hover:text-teal transition-colors">
+                        <h3 className="font-bold text-text-dark mb-2 line-clamp-2 group-hover:text-teal transition-colors text-lg leading-tight">
                           {relatedBlog.title}
                         </h3>
-                        <p className="text-text-body text-sm line-clamp-2">
+                        <p className="text-text-body text-sm line-clamp-2 mb-4 leading-relaxed">
                           {relatedBlog.excerpt}
                         </p>
+                        <div className="flex items-center gap-2 text-teal font-semibold text-sm group-hover:gap-3 transition-all">
+                          <span>Read More</span>
+                          <svg
+                            className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </Link>
