@@ -1,0 +1,11 @@
+{
+  "name": "Milanova - Digital Solutions for Every Mission-Driven Team",
+  "short_name": "Milanova",
+  "description": "Nepal's leading web development company. eCommerce, Web Development, SaaS Development, and UI/UX Design services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#082E23",
+  "orientation": "portrait-primary",
+  "categories": ["business", "technology", "web development"]
+}
