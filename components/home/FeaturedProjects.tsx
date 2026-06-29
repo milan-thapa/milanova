@@ -115,7 +115,7 @@ export default function FeaturedProjects() {
               return (
                 <Link key={project.id} href={`/projects/${project.slug}`}>
                   <motion.div
-                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[520px] relative cursor-pointer group shadow-2xl"
+                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[520px] relative cursor-pointer group shadow-2xl bg-gray-900"
                     whileHover={{
                       scale: 1.02,
                       y: -8,
@@ -131,9 +131,10 @@ export default function FeaturedProjects() {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw"
                         priority={index < 2}
+                        onError={() => console.log('Image failed to load:', imageUrl)}
                       />
                     ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
                     )}
 
                     {/* Gradient Overlay */}
