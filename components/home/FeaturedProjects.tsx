@@ -112,10 +112,11 @@ export default function FeaturedProjects() {
           >
             {projects.map((project: any, index: number) => {
               const imageUrl = project.mockupImage || project.coverImage
+              console.log('Project image URL:', imageUrl, 'for project:', project.title)
               return (
                 <Link key={project.id} href={`/projects/${project.slug}`}>
                   <motion.div
-                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[520px] relative cursor-pointer group shadow-2xl bg-gray-900"
+                    className="min-w-full md:min-w-[calc(33.333%-16px)] rounded-3xl overflow-hidden min-h-[450px] sm:min-h-[520px] relative cursor-pointer group shadow-2xl bg-gradient-to-br from-teal-600 to-teal-900"
                     whileHover={{
                       scale: 1.02,
                       y: -8,
@@ -123,7 +124,7 @@ export default function FeaturedProjects() {
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   >
                     {/* Background Image */}
-                    {imageUrl ? (
+                    {imageUrl && (
                       <Image
                         src={imageUrl}
                         alt={project.title}
@@ -133,8 +134,6 @@ export default function FeaturedProjects() {
                         priority={index < 2}
                         onError={() => console.log('Image failed to load:', imageUrl)}
                       />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />
                     )}
 
                     {/* Gradient Overlay */}
