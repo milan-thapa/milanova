@@ -45,11 +45,11 @@ export default function CareersClient() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-16">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#B5E12A]/10 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-32 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-24 sm:py-40 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,11 +88,11 @@ export default function CareersClient() {
       </div>
 
       {/* All Jobs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-16 pb-24">
         <motion.h2
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-2xl sm:text-3xl font-bold text-[#0D1F1A] mb-6"
+          className="text-2xl sm:text-3xl font-bold text-[#0D1F1A] mb-8"
         >
           Open Positions ({jobs.length})
         </motion.h2>
@@ -192,14 +192,14 @@ function JobCard({ job }: { job: Job }) {
 
   return (
     <Link href={`/careers/${job.slug}`}>
-      <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-black mb-2">
+            <h3 className="text-xl font-semibold text-black mb-3">
               {job.title}
             </h3>
-            <p className="text-gray-600 text-sm mb-4 line-clamp-2">{job.description}</p>
-            <div className="flex flex-wrap items-center gap-3 mt-4">
+            <p className="text-gray-600 text-sm mb-6 line-clamp-2">{job.description}</p>
+            <div className="flex flex-wrap items-center gap-4">
               <span className={`text-sm px-4 py-2 rounded-full font-medium ${typeColors[job.type]}`}>
                 {job.type.replace('_', ' ')}
               </span>
