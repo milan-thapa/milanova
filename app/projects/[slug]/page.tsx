@@ -90,6 +90,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
     console.log('Project found:', project.title)
     console.log('Project tags:', project.tags)
+    console.log('Project coverImage:', project.coverImage)
+    console.log('Project mockupImage:', project.mockupImage)
 
     // Ensure tags is an array
     const tags = Array.isArray(project.tags) ? project.tags : []
