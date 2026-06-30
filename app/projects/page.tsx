@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import ProjectHero from '@/components/projects/ProjectHero'
 import ProjectGrid from '@/components/projects/ProjectGrid'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Projects - Milanova',
   description: 'Explore our portfolio of successful web development projects. From eCommerce platforms to SaaS applications, see how we help businesses grow.',
