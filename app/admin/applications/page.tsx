@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react"
 import AdminSidebar from "@/components/admin/AdminSidebar"
 import { Button } from "@/components/ui/button"
-import { Trash2, Loader2, ExternalLink, Download } from "lucide-react"
+import { Trash2, Loader2, ExternalLink, Download, Mail } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { toast } from "sonner"
 import { ConfirmDialog } from "@/components/admin/ConfirmDialog"
 
@@ -24,6 +26,14 @@ export default function AdminApplications() {
   const [applicationToDelete, setApplicationToDelete] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('ALL')
+  const [emailModalOpen, setEmailModalOpen] = useState(false)
+  const [selectedApplication, setSelectedApplication] = useState<any>(null)
+  const [sendingEmail, setSendingEmail] = useState(false)
+  const [emailForm, setEmailForm] = useState({
+    template: 'custom',
+    subject: '',
+    customMessage: ''
+  })
 
   useEffect(() => {
     fetch('/api/admin/applications')
@@ -95,6 +105,49 @@ export default function AdminApplications() {
     }
   }
 
+  const openEmailModal = (application: any) => {
+    setSelectedApplication(application)
+    setEmailForm({
+      template: 'custom',
+      subject: `Regarding your application for ${application.job.title}`,
+      customMessage: ''
+    })
+    setEmailModalOpen(true)
+  }
+
+  const sendEmail = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedApplication) return
+
+    setSendingEmail(true)
+    try {
+      const res = await fetch('/api/admin/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: selectedApplication.email,
+          subject: emailForm.subject,
+          template: emailForm.template,
+          candidateName: selectedApplication.fullName,
+          jobTitle: selectedApplication.job.title,
+          customMessage: emailForm.customMessage
+        })
+      })
+
+      if (res.ok) {
+        toast.success('Email sent successfully')
+        setEmailModalOpen(false)
+      } else {
+        const data = await res.json()
+        toast.error(data.error || 'Failed to send email')
+      }
+    } catch {
+      toast.error('Failed to send email')
+    } finally {
+      setSendingEmail(false)
+    }
+  }
+
   return (
     <div className="flex min-h-screen bg-gray-50">
       <AdminSidebar />
@@ -147,6 +200,13 @@ export default function AdminApplications() {
                     </p>
                   </div>
                   <div className="flex gap-2 sm:flex-row flex-col">
+                    <button
+                      onClick={() => openEmailModal(application)}
+                      className="px-3 py-1.5 text-sm bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-1 w-full sm:w-auto"
+                    >
+                      <Mail className="w-4 h-4" />
+                      Email
+                    </button>
                     <a
                       href={`/api/admin/download?url=${encodeURIComponent(application.resumeUrl)}&filename=${encodeURIComponent(`${application.fullName.replace(/\s+/g, '_')}_resume.pdf`)}`}
                       target="_blank"
@@ -244,6 +304,81 @@ export default function AdminApplications() {
         confirmText="Delete"
         cancelText="Cancel"
       />
+
+      {/* Email Modal */}
+      {emailModalOpen && selectedApplication && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-4">Send Email to {selectedApplication.fullName}</h2>
+              <form onSubmit={sendEmail} className="space-y-4">
+                <div>
+                  <Label htmlFor="template">Email Template</Label>
+                  <select
+                    id="template"
+                    value={emailForm.template}
+                    onChange={(e) => {
+                      setEmailForm({ ...emailForm, template: e.target.value })
+                      if (e.target.value === 'rejection') {
+                        setEmailForm(prev => ({ ...prev, subject: `Application Update - ${selectedApplication.job.title}` }))
+                      } else if (e.target.value === 'interview') {
+                        setEmailForm(prev => ({ ...prev, subject: `Interview Invitation - ${selectedApplication.job.title}` }))
+                      } else if (e.target.value === 'offer') {
+                        setEmailForm(prev => ({ ...prev, subject: `Job Offer - ${selectedApplication.job.title}` }))
+                      } else {
+                        setEmailForm(prev => ({ ...prev, subject: `Regarding your application for ${selectedApplication.job.title}` }))
+                      }
+                    }}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="custom">Custom Message</option>
+                    <option value="rejection">Rejection Email</option>
+                    <option value="interview">Interview Invitation</option>
+                    <option value="offer">Job Offer</option>
+                  </select>
+                </div>
+
+                <div>
+                  <Label htmlFor="subject">Subject</Label>
+                  <Input
+                    id="subject"
+                    value={emailForm.subject}
+                    onChange={(e) => setEmailForm({ ...emailForm, subject: e.target.value })}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="customMessage">Message</Label>
+                  <textarea
+                    id="customMessage"
+                    value={emailForm.customMessage}
+                    onChange={(e) => setEmailForm({ ...emailForm, customMessage: e.target.value })}
+                    placeholder={emailForm.template === 'custom' ? 'Write your custom message here...' : 'Add any additional details (optional)'}
+                    rows={6}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  />
+                </div>
+
+                <div className="flex gap-3 justify-end">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setEmailModalOpen(false)}
+                    disabled={sendingEmail}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" disabled={sendingEmail}>
+                    {sendingEmail ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Mail className="w-4 h-4 mr-2" />}
+                    {sendingEmail ? 'Sending...' : 'Send Email'}
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
