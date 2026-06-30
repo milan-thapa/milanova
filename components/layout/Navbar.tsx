@@ -52,6 +52,17 @@ export default function Navbar() {
     setMobileOpen(false)
   }, [pathname])
 
+  // Handle Escape key to close mobile menu
+  useEffect(() => {
+    const handleEscape = () => setMobileOpen(false)
+    const container = document.querySelector('[aria-label="Main navigation"]')
+
+    if (container) {
+      container.addEventListener('focus-trap-escape', handleEscape)
+      return () => container.removeEventListener('focus-trap-escape', handleEscape)
+    }
+  }, [])
+
   return (
     <>
       {/* ─── FULL NAVBAR (with green curved background, top of page) ─── */}

@@ -216,7 +216,7 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting || !csrfToken}
-                className="w-full bg-black text-white rounded-full px-6 sm:px-8 py-3 sm:py-4 font-bold hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                className="w-full bg-[#B5E12A] text-black rounded-full px-6 sm:px-8 py-3 sm:py-4 font-bold hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
               >
                 {isSubmitting ? 'Sending...' : 'Get a Quote'}
               </button>
