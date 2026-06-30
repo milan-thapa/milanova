@@ -16,15 +16,19 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://milanova.vercel.app'
   
   try {
+    console.log('Generating metadata for project slug:', params.slug)
     const project = await prisma.project.findUnique({
       where: { slug: params.slug },
     })
 
     if (!project) {
+      console.error('Project not found in metadata generation:', params.slug)
       return {
         title: 'Project Not Found',
       }
     }
+
+    console.log('Metadata generation - project found:', project.title)
 
     return {
       title: `${project.title} - Milanova`,
