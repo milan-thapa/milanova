@@ -1,5 +1,5 @@
 'use client'
-
+// Services admin page - fixed syntax error
 import { useState, useEffect } from 'react'
 import AdminSidebar from "@/components/admin/AdminSidebar"
 import { Button } from "@/components/ui/button"
