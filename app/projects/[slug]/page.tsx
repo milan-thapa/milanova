@@ -78,6 +78,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   try {
+    console.log('Fetching project with slug:', params.slug)
     const project = await prisma.project.findUnique({
       where: { slug: params.slug },
     })
@@ -88,6 +89,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     }
 
     console.log('Project found:', project.title)
+    console.log('Project tags:', project.tags)
+
+    // Ensure tags is an array
+    const tags = Array.isArray(project.tags) ? project.tags : []
 
   return (
     <main className="min-h-screen bg-white">
@@ -119,7 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.map((tag: string) => (
+            {tags.map((tag: string) => (
               <span
                 key={tag}
                 className="bg-[#B5E12A]/10 text-[#1A6B55] text-sm font-medium rounded-full px-4 py-2"
