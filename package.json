@@ -2,6 +2,7 @@
   "name": "milanova",
   "version": "0.1.0",
   "private": true,
+  "description": "Milanova - Web Development Portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
