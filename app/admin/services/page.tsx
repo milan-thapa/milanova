@@ -348,17 +348,16 @@ export default function AdminServices() {
           </CardContent>
         </Card>
       </main>
-    </div>
 
-    <ConfirmDialog
-      open={deleteDialogOpen}
-      onOpenChange={setDeleteDialogOpen}
-      title="Delete Service"
-      description="Are you sure you want to delete this service? This action cannot be undone."
-      onConfirm={confirmDelete}
-      confirmText="Delete"
-      cancelText="Cancel"
-    />
-    </>
+      <ConfirmDialog
+        open={deleteDialogOpen}
+        onOpenChange={setDeleteDialogOpen}
+        title="Delete Service"
+        description="Are you sure you want to delete this service? This action cannot be undone."
+        onConfirm={confirmDelete}
+        confirmText="Delete"
+        cancelText="Cancel"
+      />
+    </div>
   )
 }
