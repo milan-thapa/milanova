@@ -11,6 +11,8 @@ interface ProjectPageProps {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://milanova.vercel.app'
+  
   try {
     const project = await prisma.project.findUnique({
       where: { slug: params.slug },
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       openGraph: {
         title: `${project.title} - Milanova`,
         description: project.description,
-        url: `https://milanova.com/projects/${project.slug}`,
+        url: `${baseUrl}/projects/${project.slug}`,
         type: 'website',
         images: project.coverImage || project.mockupImage ? [
           {
@@ -39,7 +41,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
           },
         ] : [
           {
-            url: '/images/og-image.png',
+            url: `${baseUrl}/images/og-image.png`,
             width: 1200,
             height: 630,
             alt: project.title,
@@ -50,12 +52,24 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
         card: 'summary_large_image',
         title: `${project.title} - Milanova`,
         description: project.description,
-        images: project.coverImage || project.mockupImage ? [project.coverImage || project.mockupImage] : ['/images/og-image.png'],
+        images: project.coverImage || project.mockupImage ? [project.coverImage || project.mockupImage] : [`${baseUrl}/images/og-image.png`],
       },
     }
   } catch (error) {
     return {
       title: 'Project - Milanova',
+      openGraph: {
+        title: 'Project - Milanova',
+        url: `${baseUrl}/projects/${params.slug}`,
+        images: [
+          {
+            url: `${baseUrl}/images/og-image.png`,
+            width: 1200,
+            height: 630,
+            alt: 'Milanova',
+          },
+        ],
+      },
     }
   }
 }

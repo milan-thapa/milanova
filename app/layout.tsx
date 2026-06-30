@@ -19,7 +19,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://milanova.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://milanova.vercel.app'),
   alternates: {
     canonical: '/',
   },

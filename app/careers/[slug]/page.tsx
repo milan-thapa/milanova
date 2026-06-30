@@ -10,6 +10,8 @@ interface PageProps {
 export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://milanova.vercel.app'
+  
   try {
     const job = await prisma.jobPosting.findUnique({
       where: { slug: params.slug }
@@ -27,11 +29,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       openGraph: {
         title: `${job.title} | Careers | Milanova`,
         description: job.description?.substring(0, 160) || '',
-        url: `https://milanova.com/careers/${job.slug}`,
+        url: `${baseUrl}/careers/${job.slug}`,
         type: 'website',
         images: [
           {
-            url: '/images/og-image.png',
+            url: `${baseUrl}/images/og-image.png`,
             width: 1200,
             height: 630,
             alt: job.title,
@@ -42,13 +44,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         card: 'summary_large_image',
         title: `${job.title} | Careers | Milanova`,
         description: job.description?.substring(0, 160) || '',
-        images: ['/images/og-image.png'],
+        images: [`${baseUrl}/images/og-image.png`],
       },
     }
   } catch (error) {
     console.error('Error generating job metadata:', error)
     return {
-      title: 'Job Not Found | Milanova'
+      title: 'Job Not Found | Milanova',
+      openGraph: {
+        title: 'Job Not Found | Milanova',
+        url: `${baseUrl}/careers/${params.slug}`,
+        images: [
+          {
+            url: `${baseUrl}/images/og-image.png`,
+            width: 1200,
+            height: 630,
+            alt: 'Milanova',
+          },
+        ],
+      },
     }
   }
 }
