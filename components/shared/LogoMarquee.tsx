@@ -50,7 +50,7 @@ export default function LogoMarquee() {
 
   return (
     <div className="overflow-hidden py-12 bg-white">
-      <p className="text-center text-sm font-medium text-[#8FA89E] mb-8">
+      <p className="text-left text-sm font-medium text-[#8FA89E] mb-8">
         Trusted by {logos.length}+ Businesses Across Nepal & Beyond
       </p>
       

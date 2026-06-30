@@ -1,6 +1,12 @@
 import { cookies } from 'next/headers'
 
-const CSRF_SECRET = process.env.CSRF_SECRET || 'default-secret-change-in-production'
+const CSRF_SECRET = process.env.CSRF_SECRET || (() => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  // Fallback for environments without crypto.randomUUID
+  return 'dev-csrf-secret-' + Math.random().toString(36).substring(2) + Date.now().toString(36)
+})()
 const CSRF_COOKIE_NAME = 'csrf_token'
 
 // Generate a random token

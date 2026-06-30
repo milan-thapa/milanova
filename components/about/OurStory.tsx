@@ -18,7 +18,7 @@ export default function OurStory() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center mb-12 sm:mb-16 md:mb-20"
+          className="max-w-4xl text-left mb-12 sm:mb-16 md:mb-20"
         >
           <p className="text-[#B5E12A] font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4">
             Our Story

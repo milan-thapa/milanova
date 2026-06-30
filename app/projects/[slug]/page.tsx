@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import { sanitizeHtml } from '@/lib/security/input-sanitizer'
 
 interface ProjectPageProps {
   params: {
@@ -141,7 +142,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="max-w-4xl">
             <h2 className="text-[#0D1F1A] text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12">What We Did</h2>
             <div className="prose prose-sm sm:prose-base lg:prose-lg prose-headings:text-[#0D1F1A] prose-p:text-[#3A4A44] max-w-none">
-              <div dangerouslySetInnerHTML={{ __html: project.whatWeDid || '<p>Our approach to solving these challenges.</p>' }} />
+              <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(project.whatWeDid || '<p>Our approach to solving these challenges.</p>') }} />
             </div>
           </div>
         </div>

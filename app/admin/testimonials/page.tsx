@@ -5,6 +5,7 @@ import AdminSidebar from "@/components/admin/AdminSidebar"
 import { Button } from "@/components/ui/button"
 import { Plus, Trash2, Loader2, Check } from "lucide-react"
 import Link from "next/link"
+import NextImage from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { toast } from "sonner"
 import { ConfirmDialog } from "@/components/admin/ConfirmDialog"
@@ -167,9 +168,11 @@ export default function AdminTestimonials() {
                     />
                     <div className="flex items-start gap-4 flex-1">
                       {testimonial.image && (
-                        <img
+                        <NextImage
                           src={testimonial.image}
                           alt={testimonial.name}
+                          width={64}
+                          height={64}
                           className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover"
                         />
                       )}

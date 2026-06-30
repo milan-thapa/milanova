@@ -56,7 +56,7 @@ export default function Testimonials() {
 
   if (loading) {
     return (
-      <section className="py-12 sm:py-16 md:py-20 bg-[#FDFDE8]">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <TestimonialsSkeleton />
         </div>
@@ -66,10 +66,10 @@ export default function Testimonials() {
 
   if (testimonials.length === 0) {
     return (
-      <section className="py-20 bg-[#FDFDE8]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionEyebrow label="TESTIMONIAL" />
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
             What Our Clients Say
           </h2>
           <p className="text-[#3A4A44] max-w-2xl mb-12">
@@ -82,7 +82,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#FDFDE8]">
+    <section className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <SectionEyebrow label="TESTIMONIAL" />
         <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-3">
@@ -93,7 +93,7 @@ export default function Testimonials() {
         </p>
 
         {/* Testimonial Card */}
-        <div className="bg-[#FDFDE8] border border-[#E8E8D0] rounded-3xl shadow-sm p-8 md:p-12">
+        <div className="bg-white/80 backdrop-blur-xl border border-white/50 rounded-3xl shadow-lg p-8 md:p-12">
           {/* Counter */}
           <div className="text-right text-[#8FA89E] text-sm mb-8">
             {currentIndex + 1} / {testimonials.length}
@@ -122,7 +122,7 @@ export default function Testimonials() {
                       sizes="(max-width: 768px) 220px, 220px"
                     />
                   ) : (
-                    <div className="w-full h-full rounded-2xl bg-[#0D1F1A] flex items-center justify-center">
+                    <div className="w-full h-full rounded-2xl bg-gray-900 flex items-center justify-center">
                       <svg className="w-32 h-32 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                       </svg>
@@ -139,13 +139,13 @@ export default function Testimonials() {
                 </div>
 
                 <div className="relative z-10 pt-8">
-                  <p className="text-[#0D1F1A] text-xl md:text-2xl font-medium leading-relaxed mb-6">
+                  <p className="text-black text-xl md:text-2xl font-medium leading-relaxed mb-6">
                     {currentTestimonial.quote}
                   </p>
-                  <p className="text-[#0D1F1A] font-bold text-lg mb-1">
+                  <p className="text-black font-bold text-lg mb-1">
                     {currentTestimonial.name}
                   </p>
-                  <p className="text-[#1A6B55] text-sm mb-1">{currentTestimonial.role}</p>
+                  <p className="text-gray-600 text-sm mb-1">{currentTestimonial.role}</p>
                   <p className="text-[#3A4A44] text-sm">{currentTestimonial.company}</p>
                 </div>
               </div>
@@ -165,8 +165,8 @@ export default function Testimonials() {
                   }}
                   className={`w-3 h-3 rounded-full transition-all ${
                     index === currentIndex
-                      ? 'bg-[#1A6B55] w-8'
-                      : 'bg-[#C8C8A0] border-2 border-[#C8C8A0]'
+                      ? 'bg-black w-8'
+                      : 'bg-gray-300 border-2 border-gray-300'
                   }`}
                 />
               ))}
@@ -176,7 +176,7 @@ export default function Testimonials() {
             <div className="flex gap-2">
               <button
                 onClick={prevTestimonial}
-                className="w-12 h-12 rounded-full bg-[#1A6B55] text-white flex items-center justify-center hover:brightness-110 transition-all"
+                className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-all"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -184,7 +184,7 @@ export default function Testimonials() {
               </button>
               <button
                 onClick={nextTestimonial}
-                className="w-12 h-12 rounded-full bg-[#1A6B55] text-white flex items-center justify-center hover:brightness-110 transition-all"
+                className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-all"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

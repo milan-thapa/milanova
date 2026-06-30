@@ -1,9 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Metadata } from 'next'
 import { motion, AnimatePresence } from 'framer-motion'
-import SectionEyebrow from '@/components/shared/SectionEyebrow'
 
 const faqs = [
   {
@@ -58,30 +56,32 @@ export default function FAQsPage() {
   }
 
   return (
-    <main className="bg-white min-h-screen">
-      {/* Curved Green Background for Navbar */}
-      <div className="bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]" />
-      
-      <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A]">
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-10 w-72 h-72 bg-[#B5E12A]/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#1A6B55]/10 rounded-full blur-3xl" />
-        </div>
+    <main className="min-h-screen">
+      <section className="relative min-h-[40vh] sm:min-h-[50vh] bg-white flex items-center pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 md:pb-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full relative z-10">
+          <div className="max-w-4xl">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-gray-100 border border-gray-200 rounded-full px-4 py-2 mb-8">
+              <span className="w-2 h-2 bg-black rounded-full" />
+              <span className="text-black/90 text-sm font-medium tracking-wide">FAQ's</span>
+            </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 text-center relative z-10">
-          <SectionEyebrow label="FAQ's" />
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-white/90 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Web Development Nepal - We excel at turning challenges into innovative solutions effortlessly.
-          </p>
+            {/* Headline */}
+            <h1 className="text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 sm:mb-8">
+              Frequently Asked Questions
+            </h1>
+
+            {/* Description */}
+            <p className="text-black/80 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed mb-6 sm:mb-8 max-w-3xl">
+              Web Development Nepal - We excel at turning challenges into innovative solutions effortlessly.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10">
+      <section className="py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 w-full">
+          <div className="max-w-4xl">
           <div className="space-y-0">
             {faqs.map((faq) => (
               <div
@@ -94,7 +94,7 @@ export default function FAQsPage() {
                   onClick={() => toggleFAQ(faq.id)}
                   className="w-full flex items-center justify-between py-6 sm:py-8 px-4 sm:px-6 text-left"
                 >
-                  <span className="text-text-dark font-semibold text-base sm:text-lg md:text-xl pr-4">
+                  <span className="text-black font-semibold text-base sm:text-lg md:text-xl pr-4">
                     {faq.question}
                   </span>
                   <motion.div
@@ -102,7 +102,7 @@ export default function FAQsPage() {
                     transition={{ duration: 0.3 }}
                   >
                     <svg
-                      className="w-5 h-5 text-text-muted flex-shrink-0"
+                      className="w-5 h-5 text-gray-600 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -127,7 +127,7 @@ export default function FAQsPage() {
                       className="overflow-hidden"
                     >
                       <div className="px-4 sm:px-6 pb-6 sm:pb-8">
-                        <p className="text-text-body text-sm sm:text-base md:text-lg leading-relaxed">
+                        <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
                           {faq.answer}
                         </p>
                       </div>
@@ -136,6 +136,7 @@ export default function FAQsPage() {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </section>

@@ -33,7 +33,7 @@ export default function StatsCards() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-12 md:mb-16"
+          className="text-left mb-10 sm:mb-12 md:mb-16"
         >
           <p className="text-[#B5E12A] font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4">
             Our Impact
@@ -41,7 +41,7 @@ export default function StatsCards() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0D1F1A] mb-4 sm:mb-6">
             Numbers that speak
           </h2>
-          <p className="text-[#3A4A44] text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+          <p className="text-[#3A4A44] text-sm sm:text-base md:text-lg max-w-2xl">
             Our track record demonstrates our commitment to delivering exceptional results for every client.
           </p>
         </motion.div>

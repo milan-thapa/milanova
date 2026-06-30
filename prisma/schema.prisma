@@ -213,3 +213,55 @@ model NewsletterSubscription {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
 }
+
+model JobPosting {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  requirements String
+  responsibilities String
+  benefits    String
+  location    String
+  type        JobType
+  experience  String
+  salary      String?
+  department  String
+  isActive    Boolean  @default(true)
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  applications JobApplication[]
+}
+
+model JobApplication {
+  id          String   @id @default(cuid())
+  jobId       String
+  job         JobPosting @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  fullName    String
+  email       String
+  phone       String
+  resumeUrl   String
+  coverLetter String?
+  linkedinUrl String?
+  portfolioUrl String?
+  status      ApplicationStatus @default(PENDING)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  INTERNSHIP
+  REMOTE
+}
+
+enum ApplicationStatus {
+  PENDING
+  REVIEWED
+  INTERVIEW
+  ACCEPTED
+  REJECTED
+}

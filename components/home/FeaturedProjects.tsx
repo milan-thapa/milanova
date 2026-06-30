@@ -48,7 +48,7 @@ export default function FeaturedProjects() {
 
   if (loading) {
     return (
-      <section className="py-12 sm:py-16 md:py-20 bg-[#F4F9F4]">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <FeaturedProjectsSkeleton />
         </div>
@@ -58,7 +58,7 @@ export default function FeaturedProjects() {
 
   if (projects.length === 0) {
     return (
-      <section className="py-20 bg-[#F4F9F4]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="text-center py-12 text-[#8FA89E]">No featured projects available at the moment.</div>
         </div>
@@ -67,7 +67,7 @@ export default function FeaturedProjects() {
   }
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#F4F9F4]">
+    <section className="py-12 sm:py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-6 mb-12">
@@ -75,7 +75,7 @@ export default function FeaturedProjects() {
             <div className="inline-block bg-black text-white px-4 sm:px-6 py-2 rounded-lg mb-4">
               <span className="font-semibold tracking-widest text-xs sm:text-sm">FEATURED PROJECTS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-3">
               Bringing Ideas to Life — eCommerce, Apps & More
             </h2>
             <p className="text-[#3A4A44] max-w-2xl text-sm sm:text-base">
@@ -87,7 +87,7 @@ export default function FeaturedProjects() {
           <div className="flex gap-2 self-start sm:self-auto">
             <button
               onClick={prevProject}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#0D1F1A] flex items-center justify-center hover:bg-[#1A6B55] hover:border-[#1A6B55] hover:text-white transition-all"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-900 flex items-center justify-center hover:bg-gray-900 hover:border-gray-900 hover:text-white transition-all"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -95,7 +95,7 @@ export default function FeaturedProjects() {
             </button>
             <button
               onClick={nextProject}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#0D1F1A] flex items-center justify-center hover:bg-[#1A6B55] hover:border-[#1A6B55] hover:text-white transition-all"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-900 flex items-center justify-center hover:bg-gray-900 hover:border-gray-900 hover:text-white transition-all"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -124,7 +124,7 @@ export default function FeaturedProjects() {
                       priority={index < 2}
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black" />
+                    <div className="absolute inset-0 bg-gray-800" />
                   )}
 
                   {/* Gradient Overlay */}
@@ -157,20 +157,6 @@ export default function FeaturedProjects() {
                         <p className="text-white/95 font-medium mb-3 text-sm sm:text-base line-clamp-2 drop-shadow-md">
                           {project.tagline}
                         </p>
-                      )}
-
-                      {/* Stats */}
-                      {project.stats && project.stats.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.stats.slice(0, 2).map((stat: string, statIndex: number) => (
-                            <span
-                              key={statIndex}
-                              className="bg-lime/30 backdrop-blur-sm border border-lime/40 text-lime text-xs font-semibold rounded-lg px-3 py-1.5 shadow-md"
-                            >
-                              {stat}
-                            </span>
-                          ))}
-                        </div>
                       )}
 
                       {/* Description */}

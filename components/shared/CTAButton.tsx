@@ -3,15 +3,14 @@ import Link from 'next/link'
 interface CTAButtonProps {
   href: string
   children: React.ReactNode
-  variant?: 'lime' | 'teal' | 'dark'
+  variant?: 'white' | 'dark'
   className?: string
 }
 
-export default function CTAButton({ href, children, variant = 'lime', className = '' }: CTAButtonProps) {
+export default function CTAButton({ href, children, variant = 'white', className = '' }: CTAButtonProps) {
   const variants = {
-    lime: 'bg-lime text-text-dark hover:brightness-110',
-    teal: 'bg-teal text-white hover:brightness-110',
-    dark: 'bg-[#1A2E26] text-white hover:brightness-110',
+    white: 'bg-white text-gray-900 hover:bg-gray-100',
+    dark: 'bg-gray-900 text-white hover:bg-gray-800',
   }
 
   return (

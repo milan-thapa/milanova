@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { BlogPostingStructuredData, BreadcrumbStructuredData } from '@/components/seo/StructuredData'
 import BlogShareButtons from '@/components/blogs/BlogShareButtons'
+import { sanitizeHtml } from '@/lib/security/input-sanitizer'
 
 interface BlogPageProps {
   params: {
@@ -194,7 +195,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         {/* Content */}
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-sm sm:prose-base lg:prose-lg prose-headings:font-bold prose-headings:text-[#0D1F1A] prose-p:text-[#3A4A44] prose-a:text-[#1A6B55] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#0D1F1A] max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+            <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(blog.content) }} />
           </div>
 
           {/* Tags */}

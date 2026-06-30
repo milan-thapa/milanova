@@ -22,14 +22,14 @@ export default function TermsOfService() {
           <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#1A6B55]/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 text-left relative z-10">
           <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
             <span className="text-white/90 text-sm font-medium tracking-wide">LEGAL</span>
           </div>
           <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Terms of Service
           </h1>
-          <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
             Legal terms and conditions for using our website and services.
           </p>
         </div>
@@ -187,7 +187,7 @@ export default function TermsOfService() {
             <ul className="list-none text-[#3A4A44] text-sm sm:text-base leading-relaxed">
               <li><strong>Email:</strong> legal@milanova.com</li>
               <li><strong>Address:</strong> Kathmandu, Nepal</li>
-              <li><strong>Phone:</strong> +977-9801816685</li>
+              <li><strong>Phone:</strong> +977 9762415657</li>
             </ul>
           </section>
         </div>

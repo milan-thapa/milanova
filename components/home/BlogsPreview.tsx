@@ -30,7 +30,7 @@ export default function BlogsPreview() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionEyebrow label="INSIGHTS" />
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-12">
             Our Latest Thinking
           </h2>
           <div className="text-center py-12 text-[#8FA89E]">Loading insights...</div>
@@ -41,10 +41,10 @@ export default function BlogsPreview() {
 
   if (blogs.length === 0) {
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#EDF3EE]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionEyebrow label="INSIGHTS" />
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-12">
             Our Latest Thinking
           </h2>
           <div className="text-center py-12 text-[#8FA89E]">No insights available at the moment.</div>
@@ -103,7 +103,7 @@ export default function BlogsPreview() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[#0D1F1A] font-bold text-lg mb-2 line-clamp-2 group-hover:text-[#1A6B55] transition-colors">
+                <h3 className="text-black font-bold text-lg mb-2 line-clamp-2 group-hover:text-accent transition-colors">
                   {blog.title}
                 </h3>
 
@@ -133,7 +133,7 @@ export default function BlogsPreview() {
         <div className="text-center">
           <Link
             href="/blogs"
-            className="text-[#1A6B55] font-medium hover:underline inline-flex items-center gap-2"
+            className="text-accent font-medium hover:underline inline-flex items-center gap-2"
           >
             View All Insights
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

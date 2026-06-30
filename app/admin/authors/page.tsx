@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { Plus, Edit, Trash2, Mail } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ImageUpload } from '@/components/admin/ImageUpload'
+import NextImage from 'next/image'
 
 interface Author {
   id: string
@@ -295,9 +296,11 @@ export default function AuthorsPage() {
             <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
               <div className="flex items-center gap-3">
                 {author.image ? (
-                  <img
+                  <NextImage
                     src={author.image}
                     alt={author.name}
+                    width={48}
+                    height={48}
                     className="w-12 h-12 rounded-full object-cover"
                   />
                 ) : (

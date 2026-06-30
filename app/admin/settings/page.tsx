@@ -180,7 +180,7 @@ export default function AdminSettings() {
                     id="phone"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+977-9801816685"
+                    placeholder="+977 9762415657"
                   />
                 </div>
               </div>
@@ -191,7 +191,7 @@ export default function AdminSettings() {
                     id="whatsappNumber"
                     value={formData.whatsappNumber}
                     onChange={(e) => setFormData({ ...formData, whatsappNumber: e.target.value })}
-                    placeholder="+977-9801816685"
+                    placeholder="+977 9762415657"
                   />
                 </div>
                 <div className="space-y-2">
@@ -200,7 +200,7 @@ export default function AdminSettings() {
                     id="whatsappUrl"
                     value={formData.whatsappUrl}
                     onChange={(e) => setFormData({ ...formData, whatsappUrl: e.target.value })}
-                    placeholder="https://wa.me/9779801816685"
+                    placeholder="https://wa.me/9779762415657"
                   />
                 </div>
               </div>
@@ -314,7 +314,7 @@ export default function AdminSettings() {
                     id="heroCtaUrl"
                     value={formData.heroCtaUrl}
                     onChange={(e) => setFormData({ ...formData, heroCtaUrl: e.target.value })}
-                    placeholder="https://wa.me/9779801816685"
+                    placeholder="https://wa.me/9779762415657"
                     required
                   />
                 </div>

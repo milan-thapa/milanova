@@ -54,7 +54,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ─── FULL NAVBAR (transparent, top of page) ─── */}
+      {/* ─── FULL NAVBAR (with green curved background, top of page) ─── */}
       <nav
         aria-label="Main navigation"
         className={`
@@ -65,7 +65,7 @@ export default function Navbar() {
             : 'opacity-100 translate-y-0 pointer-events-auto'}
         `}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between">
+        <div className="w-full px-4 sm:px-6 lg:px-10 h-16 sm:h-20 flex items-center justify-between bg-[#082E23] rounded-b-[2rem] sm:rounded-b-[3rem]">
           {/* Logo */}
           <Link href="/" className="relative z-10 group flex items-center gap-1.5 sm:gap-2">
             <span className="text-white font-bold text-lg sm:text-xl tracking-tight">Milanova</span>
@@ -84,9 +84,9 @@ export default function Navbar() {
                   href={link.href}
                   className={`
                     relative text-sm font-medium tracking-wide
-                    text-white/80 hover:text-lime
+                    text-white/80 hover:text-white
                     transition-colors duration-200
-                    ${pathname === link.href ? 'text-lime' : ''}
+                    ${pathname === link.href ? 'text-white' : ''}
                   `}
                 >
                   {link.name}
@@ -120,15 +120,15 @@ export default function Navbar() {
           <div
             className="
               flex items-center justify-between
-              bg-[#082E23]
+              bg-white/70
               backdrop-blur-2xl
-              border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)]
+              border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)]
               rounded-[1.5rem] sm:rounded-[2rem] px-4 sm:px-6 h-14 sm:h-16
             "
           >
             {/* Logo */}
             <Link href="/" className="group flex items-center gap-1 sm:gap-1.5">
-              <span className="text-white font-bold text-base sm:text-lg tracking-tight">Milanova</span>
+              <span className="text-black font-bold text-base sm:text-lg tracking-tight">Milanova</span>
             </Link>
 
             {/* Desktop Links */}
@@ -139,9 +139,9 @@ export default function Navbar() {
                   href={link.href}
                   className={`
                     relative text-sm font-medium
-                    text-white/80 hover:text-lime
+                    text-black/70 hover:text-black
                     transition-colors duration-200
-                    ${pathname === link.href ? 'text-lime' : ''}
+                    ${pathname === link.href ? 'text-black' : ''}
                   `}
                 >
                   {link.name}
@@ -151,11 +151,11 @@ export default function Navbar() {
 
             {/* CTA */}
             <div className="hidden lg:flex">
-              <WhatsAppButton variant="outline" />
+              <WhatsAppButton variant="solid" />
             </div>
 
             {/* Mobile Hamburger */}
-            <MobileMenuButton open={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} light />
+            <MobileMenuButton open={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} />
           </div>
         </div>
       </nav>
@@ -214,7 +214,7 @@ export default function Navbar() {
                 text-[#0D1F1A] font-medium text-sm
                 transition-all duration-300
                 hover:bg-gray-50 hover:pl-5 hover:translate-x-1
-                ${pathname === link.href ? 'bg-gray-50 text-teal' : ''}
+                ${pathname === link.href ? 'bg-gray-50 text-black' : ''}
               `}
             >
               {link.name}
@@ -228,10 +228,10 @@ export default function Navbar() {
         {/* Drawer footer CTA */}
         <div className="px-4 sm:px-6 pb-6 sm:pb-8 pt-4 border-t border-gray-100">
           <a
-            href="https://wa.me/9779801816685"
+            href="https://wa.me/9779762415657"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full bg-teal text-white rounded-xl px-4 py-3.5 text-sm font-semibold hover:brightness-110 active:scale-[0.98] transition-all"
+            className="flex items-center justify-center gap-2 w-full bg-gray-900 text-white rounded-xl px-4 py-3.5 text-sm font-semibold hover:bg-gray-800 active:scale-[0.98] transition-all"
           >
             <WhatsAppIcon />
             WhatsApp Us
@@ -247,14 +247,14 @@ export default function Navbar() {
 function WhatsAppButton({ variant }: { variant: 'solid' | 'outline' }) {
   return (
     <a
-      href="https://wa.me/9779801816685"
+      href="https://wa.me/9779762415657"
       target="_blank"
       rel="noopener noreferrer"
       className={`
         flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold
         transition-all duration-200 active:scale-[0.97]
         ${variant === 'solid'
-          ? 'bg-teal text-white hover:brightness-110 shadow-sm'
+          ? 'bg-gray-900 text-white hover:bg-gray-800 shadow-sm'
           : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm'}
       `}
     >

@@ -81,8 +81,8 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Hero section with green gradient background for navbar */}
-      <div className="bg-gradient-to-br from-[#082E23] via-[#1A3028] to-[#0D1F1A] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]"></div>
+      {/* Hero section with dark background for navbar */}
+      <div className="bg-[#1a1a1a] h-16 sm:h-20 rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[4rem]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12 sm:py-16 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
@@ -99,10 +99,10 @@ export default function ContactForm() {
             <div className="space-y-4 sm:space-y-6">
               <a
                 href="mailto:info@milanova.com"
-                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-[#E0EDE6] rounded-xl"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-gray-200 rounded-xl"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F9FDF9] flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-teal" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                   </svg>
                 </div>
@@ -113,24 +113,24 @@ export default function ContactForm() {
               </a>
 
               <a
-                href="tel:+9779801816685"
-                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-[#E0EDE6] rounded-xl"
+                href="tel:+9779762415657"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-gray-200 rounded-xl"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F9FDF9] flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-teal" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 1.25 0 2.45.2 3.57.57.35.13.74.04 1.02-.24l2.2-2.2z" />
                   </svg>
                 </div>
                 <div>
                   <p className="text-text-muted text-xs sm:text-sm">Phone</p>
-                  <p className="text-text-dark font-medium text-sm sm:text-base">+977-9801816685</p>
+                  <p className="text-text-dark font-medium text-sm sm:text-base">+977 9762415657</p>
                 </div>
               </a>
             </div>
           </div>
 
           {/* Right Column - Form */}
-          <div className="bg-[#F9FDF9] border border-[#E0EDE6] rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Full Name */}
               <div>
@@ -144,7 +144,7 @@ export default function ContactForm() {
                     if (errors.fullName) setErrors({ ...errors, fullName: '' })
                   }}
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border focus:outline-none bg-white text-sm sm:text-base transition-colors ${
-                    errors.fullName ? 'border-red-500 focus:border-red-500' : 'border-[#E0E0E0] focus:border-teal'
+                    errors.fullName ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gray-900'
                   }`}
                   placeholder="John Doe"
                 />
@@ -165,7 +165,7 @@ export default function ContactForm() {
                     if (errors.email) setErrors({ ...errors, email: '' })
                   }}
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border focus:outline-none bg-white text-sm sm:text-base transition-colors ${
-                    errors.email ? 'border-red-500 focus:border-red-500' : 'border-[#E0E0E0] focus:border-teal'
+                    errors.email ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gray-900'
                   }`}
                   placeholder="john@example.com"
                 />
@@ -178,14 +178,14 @@ export default function ContactForm() {
               <div>
                 <label className="block text-text-dark font-medium mb-2 text-sm sm:text-base">Phone (optional)</label>
                 <div className="flex gap-2 sm:gap-3">
-                  <select className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-[#E0E0E0] focus:border-teal focus:outline-none bg-white text-sm sm:text-base shrink-0">
+                  <select className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 focus:border-gray-900 focus:outline-none bg-white text-sm sm:text-base shrink-0">
                     <option>NP 🇳🇵 +977</option>
                   </select>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-[#E0E0E0] focus:border-teal focus:outline-none bg-white text-sm sm:text-base"
+                    className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-300 focus:border-gray-900 focus:outline-none bg-white text-sm sm:text-base"
                     placeholder="9800000000"
                   />
                 </div>
@@ -203,7 +203,7 @@ export default function ContactForm() {
                     if (errors.projectDetails) setErrors({ ...errors, projectDetails: '' })
                   }}
                   className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border focus:outline-none bg-white resize-none text-sm sm:text-base transition-colors ${
-                    errors.projectDetails ? 'border-red-500 focus:border-red-500' : 'border-[#E0E0E0] focus:border-teal'
+                    errors.projectDetails ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-gray-900'
                   }`}
                   placeholder="Tell us about your project..."
                 />
@@ -223,7 +223,7 @@ export default function ContactForm() {
 
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl p-3 sm:p-4 text-sm sm:text-base">
+                <div className="bg-gray-100 border border-gray-300 text-gray-800 rounded-xl p-3 sm:p-4 text-sm sm:text-base">
                   We'll be in touch within 24 hours!
                 </div>
               )}

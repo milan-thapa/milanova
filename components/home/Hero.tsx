@@ -249,7 +249,7 @@ export default function Hero() {
               target="_blank" rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
               className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform duration-200"
-              style={{ backgroundColor: '#25D366' }}
+              style={{ backgroundColor: '#333333' }}
             >
               <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
             </a>
@@ -264,7 +264,7 @@ export default function Hero() {
               <motion.div variants={fadeUp} className="mb-8 sm:mb-10">
                 <div className="inline-flex items-center gap-2 sm:gap-3 rounded-full px-3 sm:px-4 py-2 sm:py-2.5 border"
                   style={{ backgroundColor: 'rgba(255,255,255,0.07)', borderColor: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(8px)' }}>
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#B5E12A]" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
                   <p className="text-xs sm:text-sm font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>
@@ -301,8 +301,8 @@ export default function Hero() {
                   onMouseLeave={onLeave}
                   className="inline-flex items-center gap-2 sm:gap-3 rounded-full font-bold text-base sm:text-lg px-5 sm:px-7 py-3 sm:py-4 active:scale-[0.97] select-none"
                   style={{
-                    backgroundColor: '#B5E12A',
-                    color: '#0D1F1A',
+                    backgroundColor: '#2563EB',
+                    color: '#FFFFFF',
                     position: 'relative',
                     overflow: 'hidden',
                     transition: 'transform 0.2s ease, filter 0.2s ease',

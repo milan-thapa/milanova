@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 import AdminSidebar from "@/components/admin/AdminSidebar"
 import { prisma } from "@/lib/prisma"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { FolderKanban, FileText, MessageSquare, Users } from "lucide-react"
+import { FolderKanban, FileText, MessageSquare, Users, Building, UserCheck } from "lucide-react"
 import DashboardCharts from "@/components/admin/DashboardCharts"
 
 async function getStats() {
@@ -15,7 +15,7 @@ async function getStats() {
     prisma.contactSubmission.count(),
   ])
 
-  return { projects, blogs, testimonials, faqs, contactSubmissions }
+  return { projects, blogs, testimonials, faqs, contactSubmissions, jobs: 0, applications: 0 }
 }
 
 async function getContentByCategory() {
@@ -24,9 +24,13 @@ async function getContentByCategory() {
     _count: true,
   })
 
-  const blogsByCategory = await prisma.blog.groupBy({
-    by: ['category'],
-    _count: true,
+  // Get blogs by category using the relation
+  const blogsByCategory = await prisma.category.findMany({
+    include: {
+      _count: {
+        select: { blogs: true }
+      }
+    }
   })
 
   // Filter out null categories and ensure name is string
@@ -35,8 +39,8 @@ async function getContentByCategory() {
     .map(item => ({ name: item.category as string, count: item._count }))
 
   const blogChartData = blogsByCategory
-    .filter(item => item.category !== null)
-    .map(item => ({ name: item.category as string, count: item._count }))
+    .filter(cat => cat._count.blogs > 0)
+    .map(cat => ({ name: cat.name, count: cat._count.blogs }))
 
   return { projectChartData, blogChartData }
 }
@@ -84,22 +88,6 @@ export default async function AdminDashboard() {
       color: "text-green-600",
       bgColor: "bg-green-50",
       href: "/admin/blogs",
-    },
-    {
-      title: "Testimonials",
-      value: stats.testimonials,
-      icon: MessageSquare,
-      color: "text-purple-600",
-      bgColor: "bg-purple-50",
-      href: "/admin/testimonials",
-    },
-    {
-      title: "Contact Inquiries",
-      value: stats.contactSubmissions,
-      icon: Users,
-      color: "text-orange-600",
-      bgColor: "bg-orange-50",
-      href: "/admin/contact",
     },
   ]
 

@@ -127,7 +127,7 @@ export default function CookiePolicy() {
             <ul className="list-none text-text-body">
               <li><strong>Email:</strong> privacy@milanova.com</li>
               <li><strong>Address:</strong> Kathmandu, Nepal</li>
-              <li><strong>Phone:</strong> +977-9801816685</li>
+              <li><strong>Phone:</strong> +977 9762415657</li>
             </ul>
           </section>
         </div>

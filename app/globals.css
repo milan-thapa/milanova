@@ -5,14 +5,33 @@
 @layer base {
   :root {
     --font-poppins: 'Poppins', sans-serif;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 71% 45%;
   }
 
   body {
-    @apply bg-white text-text-body antialiased font-sans;
+    @apply bg-white text-gray-800 antialiased font-sans;
   }
 
   ::selection {
-    @apply bg-lime text-text-dark;
+    @apply bg-green-400 text-black;
   }
 
   html {

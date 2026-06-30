@@ -318,7 +318,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-[#1A3028] mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-[#8FA89E]">
-          <p>© 2025 Milanova Pvt. Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Milanova Pvt. Ltd. All rights reserved.</p>
           <div className="flex gap-4 sm:gap-6 mt-4 md:mt-0">
             <Link href="/terms" className="hover:text-[#B5E12A] transition-colors">
               Terms

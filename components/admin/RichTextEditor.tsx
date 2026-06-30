@@ -110,7 +110,7 @@ export default function RichTextEditor({ content, onChange, onImageUpload }: Ric
   }
 
   if (!editor) {
-    return <div className="min-h-[300px] sm:min-h-[400px] border rounded-lg bg-gray-50 animate-pulse" />
+    return <div className="min-h-[300px] sm:min-h-[400px] border rounded-lg bg-gray-50" />
   }
 
   return (

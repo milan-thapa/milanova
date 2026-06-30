@@ -28,7 +28,7 @@ export default function WhatDrivesUs() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-left mb-16"
         >
           <p className="text-[#B5E12A] font-semibold text-sm tracking-widest uppercase mb-4">
             What Drives Us
@@ -36,7 +36,7 @@ export default function WhatDrivesUs() {
           <h2 className="text-4xl md:text-5xl font-bold text-[#0D1F1A] mb-6">
             The principles behind our work
           </h2>
-          <p className="text-[#3A4A44] text-lg max-w-2xl mx-auto">
+          <p className="text-[#3A4A44] text-lg max-w-2xl">
             We are driven by a clear mission, a bold vision, and concrete goals that ensure every project delivers meaningful results.
           </p>
         </motion.div>

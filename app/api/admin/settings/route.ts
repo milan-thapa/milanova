@@ -10,6 +10,10 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
+    if (session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
+    }
+
     const settings = await prisma.siteSettings.findFirst()
     return NextResponse.json(settings)
   } catch (error) {
@@ -23,6 +27,10 @@ export async function POST(request: Request) {
     const session = await auth()
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    if (session.user.role !== 'ADMIN') {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
     }
 
     const body = await request.json()

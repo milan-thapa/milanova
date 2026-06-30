@@ -11,13 +11,13 @@ export default function StatisticsSection() {
   ]
 
   return (
-    <section className="py-24 bg-[#F8FAF9]">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-left mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A]">
             Company Expertise Statistics

@@ -33,7 +33,7 @@ export default function FAQPreview() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <SectionEyebrow label="FAQ's" />
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
             Frequently Asked Questions, Web Development Nepal
           </h2>
           <p className="text-[#3A4A44] mb-12">
@@ -50,7 +50,7 @@ export default function FAQPreview() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <SectionEyebrow label="FAQ's" />
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
             Frequently Asked Questions, Web Development Nepal
           </h2>
           <p className="text-[#3A4A44] mb-12">
@@ -78,8 +78,8 @@ export default function FAQPreview() {
           {faqs.map((faq) => (
             <div
               key={faq.id}
-              className={`border-b border-[#E8EDE9] ${
-                openId === faq.id ? 'bg-[#E8F5ED] border-l-3 border-l-[#1A6B55]' : 'hover:bg-[#F4F9F4]'
+              className={`border-b border-gray-200 ${
+                openId === faq.id ? 'bg-gray-50 border-l-3 border-l-accent' : 'hover:bg-gray-100'
               }`}
             >
               <button
@@ -134,7 +134,7 @@ export default function FAQPreview() {
         <div className="text-center mt-12">
           <a
             href="/faqs"
-            className="text-[#1A6B55] font-medium hover:underline inline-flex items-center gap-2"
+            className="text-accent font-medium hover:underline inline-flex items-center gap-2"
           >
             View All FAQs
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

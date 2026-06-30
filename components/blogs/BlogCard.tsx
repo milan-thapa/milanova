@@ -39,7 +39,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
     >
       <Link href={`/blogs/${blog.slug}`} className="block">
         {/* Thumbnail */}
-        <div className="aspect-video bg-gradient-to-br from-off-white to-cream rounded-xl sm:rounded-2xl mb-4 sm:mb-5 overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-300 relative">
+        <div className="aspect-video bg-gray-100 rounded-xl sm:rounded-2xl mb-4 sm:mb-5 overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-300 relative">
           {blog.coverImage ? (
             <Image
               src={blog.coverImage}
@@ -49,8 +49,8 @@ export default function BlogCard({ blog }: BlogCardProps) {
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-teal/10 to-lime/20 flex items-center justify-center">
-              <svg className="w-16 h-16 sm:w-20 sm:h-20 text-teal/40" fill="currentColor" viewBox="0 0 24 24">
+            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+              <svg className="w-16 h-16 sm:w-20 sm:h-20 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z" />
               </svg>
             </div>
@@ -60,7 +60,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
         {/* Category */}
         {blog.categoryRel && (
           <div className="mb-2">
-            <span className="text-teal text-xs font-semibold uppercase tracking-wider">
+            <span className="text-gray-600 text-xs font-semibold uppercase tracking-wider">
               {blog.categoryRel.name}
             </span>
           </div>
@@ -71,7 +71,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           {blog.tags?.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="bg-lime/20 text-teal text-xs font-bold uppercase tracking-wider rounded-full px-2.5 sm:px-3 py-1 sm:py-1.5"
+              className="bg-gray-200 text-gray-700 text-xs font-bold uppercase tracking-wider rounded-full px-2.5 sm:px-3 py-1 sm:py-1.5"
             >
               {tag}
             </span>
@@ -79,7 +79,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
         </div>
 
         {/* Title */}
-        <h3 className="text-text-dark font-bold text-lg sm:text-xl mb-2 sm:mb-3 line-clamp-2 group-hover:text-teal transition-colors leading-tight">
+        <h3 className="text-text-dark font-bold text-lg sm:text-xl mb-2 sm:mb-3 line-clamp-2 group-hover:text-gray-900 transition-colors leading-tight">
           {blog.title}
         </h3>
 
@@ -96,7 +96,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
             </svg>
             <span>{formatDate(blog.publishedAt)}</span>
           </div>
-          <div className="flex items-center gap-2 text-teal font-semibold text-xs sm:text-sm group-hover:gap-3 transition-all">
+          <div className="flex items-center gap-2 text-gray-900 font-semibold text-xs sm:text-sm group-hover:gap-3 transition-all">
             <span>Read More</span>
             <svg
               className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform"

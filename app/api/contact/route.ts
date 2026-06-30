@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
             <h2>Thanks for reaching out to Milanova!</h2>
             <p>Hi ${fullName},</p>
             <p>We've received your project inquiry and will get back to you within 24 hours.</p>
-            <p>In the meantime, feel free to WhatsApp us at +977-9801816685.</p>
+            <p>In the meantime, feel free to WhatsApp us at +977 9762415657.</p>
             <br/>
             <p>Best regards,<br/>The Milanova Team</p>
           `

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutDashboard, FolderKanban, FileText, MessageSquare, HelpCircle, Mail, LogOut, Settings, Navigation, Briefcase, Menu, X, UserCircle, User } from 'lucide-react'
+import { LayoutDashboard, FolderKanban, FileText, MessageSquare, HelpCircle, Mail, LogOut, Settings, Navigation, Briefcase, Menu, X, UserCircle, User, Users, Building } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { signOutAction } from '@/app/admin/actions'
 import { useState, useEffect } from 'react'
@@ -19,6 +19,8 @@ const navItems = [
   { href: '/admin/faqs', label: 'FAQs', icon: HelpCircle },
   { href: '/admin/contact', label: 'Contact', icon: Mail },
   { href: '/admin/services', label: 'Services', icon: Briefcase },
+  { href: '/admin/careers', label: 'Careers', icon: Building },
+  { href: '/admin/applications', label: 'Applications', icon: Users },
   { href: '/admin/navigation', label: 'Navigation', icon: Navigation },
   { href: '/admin/settings', label: 'Settings', icon: Settings },
   { href: '/admin/settings/profile', label: 'Profile', icon: User },

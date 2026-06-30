@@ -11,21 +11,27 @@ export default function MilanovaEdge() {
     offset: ['start start', 'end end']
   })
 
-  // Transform scroll progress for each card - smoother transitions
-  const card1Scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.98])
-  const card1Y = useTransform(scrollYProgress, [0, 0.4], [0, 10])
+  // Transform scroll progress for each card - smoother, more natural transitions
+  const card1Scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.95])
+  const card1Y = useTransform(scrollYProgress, [0, 0.4], [0, 20])
+  const card1Opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
+  const card1Blur = useTransform(scrollYProgress, [0, 0.4], [0, 10])
 
-  const card2Scale = useTransform(scrollYProgress, [0.3, 0.7], [1, 0.98])
-  const card2Y = useTransform(scrollYProgress, [0.3, 0.7], [0, 10])
+  const card2Scale = useTransform(scrollYProgress, [0.3, 0.7], [1, 0.95])
+  const card2Y = useTransform(scrollYProgress, [0.3, 0.7], [0, 20])
+  const card2Opacity = useTransform(scrollYProgress, [0.3, 0.7], [1, 0])
+  const card2Blur = useTransform(scrollYProgress, [0.3, 0.7], [0, 10])
 
-  const card3Scale = useTransform(scrollYProgress, [0.6, 1], [1, 0.98])
-  const card3Y = useTransform(scrollYProgress, [0.6, 1], [0, 10])
+  const card3Scale = useTransform(scrollYProgress, [0.6, 1], [1, 0.95])
+  const card3Y = useTransform(scrollYProgress, [0.6, 1], [0, 20])
+  const card3Opacity = useTransform(scrollYProgress, [0.6, 1], [1, 0])
+  const card3Blur = useTransform(scrollYProgress, [0.6, 1], [0, 10])
 
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 pb-24 sm:pb-32 md:pb-40">
+    <section className="relative py-12 sm:py-16 md:py-20 pb-24 sm:pb-32 md:pb-40 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mb-8 sm:mb-10 md:mb-12">
         <SectionEyebrow label="THE MILANOVA EDGE" />
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0D1F1A] mb-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
           Why Choose Milanova
         </h2>
         <p className="text-[#3A4A44] max-w-2xl">
@@ -41,8 +47,10 @@ export default function MilanovaEdge() {
           style={{
             scale: card1Scale,
             y: card1Y,
+            opacity: card1Opacity,
+            filter: card1Blur,
           }}
-          className="sticky top-16 sm:top-20 bg-[#1A6B55] p-6 sm:p-8 md:p-12 h-[400px] sm:h-[450px] md:h-[500px] flex items-center mb-6 sm:mb-8 z-10"
+          className="sticky top-16 sm:top-20 bg-black p-6 sm:p-8 md:p-12 h-[400px] sm:h-[450px] md:h-[500px] flex items-center mb-6 sm:mb-8 z-10"
         >
           <div className="w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
@@ -83,11 +91,13 @@ export default function MilanovaEdge() {
           style={{
             scale: card2Scale,
             y: card2Y,
+            opacity: card2Opacity,
+            filter: card2Blur,
           }}
-          className="sticky top-16 sm:top-20 bg-[#0D1F1A] p-6 sm:p-8 md:p-12 h-[400px] sm:h-[450px] md:h-[500px] flex items-center mb-12 sm:mb-16 z-20"
+          className="sticky top-16 sm:top-20 bg-gray-900 p-6 sm:p-8 md:p-12 h-[400px] sm:h-[450px] md:h-[500px] flex items-center mb-12 sm:mb-16 z-20"
         >
           <div className="w-full">
-            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-black uppercase mb-8 sm:mb-10 md:mb-12 text-center">
+            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-black uppercase mb-8 sm:mb-10 md:mb-12 text-left">
               DELIVERING EXCELLENCE! FAST & RELIABLY
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -124,8 +134,10 @@ export default function MilanovaEdge() {
           style={{
             scale: card3Scale,
             y: card3Y,
+            opacity: card3Opacity,
+            filter: card3Blur,
           }}
-          className="sticky top-16 sm:top-20 bg-[#1C5C3E] p-6 sm:p-8 md:p-12 h-[400px] sm:h-[450px] md:h-[500px] flex items-center mb-6 sm:mb-8 z-30"
+          className="sticky top-16 sm:top-20 bg-gray-800 p-6 sm:p-8 md:p-12 h-[400px] sm:h-[450px] md:h-[500px] flex items-center mb-6 sm:mb-8 z-30"
         >
           <div className="w-full">
             <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-black uppercase mb-6 sm:mb-8">
