@@ -19,7 +19,7 @@ interface Job {
   type: JobType
   experience: string
   department: string
-  salary?: string
+  salary: string | null
   isActive: boolean
   isFeatured: boolean
   createdAt: string
