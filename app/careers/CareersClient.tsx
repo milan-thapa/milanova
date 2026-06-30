@@ -199,14 +199,14 @@ function JobCard({ job }: { job: Job }) {
               {job.title}
             </h3>
             <p className="text-gray-600 text-sm mb-4 line-clamp-2">{job.description}</p>
-            <div className="flex flex-wrap gap-2">
-              <span className={`text-xs px-3 py-1 rounded-full ${typeColors[job.type]}`}>
+            <div className="flex flex-wrap items-center gap-3 mt-4">
+              <span className={`text-sm px-4 py-2 rounded-full font-medium ${typeColors[job.type]}`}>
                 {job.type.replace('_', ' ')}
               </span>
-              <span className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600">
+              <span className="text-sm px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium">
                 {job.location}
               </span>
-              <span className="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600">
+              <span className="text-sm px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium">
                 {job.department}
               </span>
             </div>
