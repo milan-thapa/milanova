@@ -49,6 +49,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ jobs })
   } catch (error) {
     logError('Error fetching job postings', { error })
-    return NextResponse.json({ error: 'Failed to fetch jobs' }, { status: 500 })
+    console.error('Jobs API error:', error)
+    return NextResponse.json({ error: 'Failed to fetch jobs', details: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 })
   }
 }
