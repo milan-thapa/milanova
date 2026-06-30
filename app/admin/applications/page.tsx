@@ -148,7 +148,7 @@ export default function AdminApplications() {
                   </div>
                   <div className="flex gap-2 sm:flex-row flex-col">
                     <a
-                      href={application.resumeUrl}
+                      href={`/api/admin/download?url=${encodeURIComponent(application.resumeUrl)}&filename=${encodeURIComponent(`${application.fullName.replace(/\s+/g, '_')}_resume.pdf`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center justify-center gap-1 w-full sm:w-auto"
