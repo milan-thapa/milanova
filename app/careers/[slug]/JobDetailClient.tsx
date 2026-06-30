@@ -294,42 +294,42 @@ function ApplicationForm({ jobId, jobTitle, csrfToken }: { jobId: string; jobTit
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">Full Name *</label>
+        <label className="block text-sm text-gray-600 mb-2">Full Name *</label>
         <input
           type="text"
           required
           value={formData.fullName}
           onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors"
         />
       </div>
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">Email *</label>
+        <label className="block text-sm text-gray-600 mb-2">Email *</label>
         <input
           type="email"
           required
           value={formData.email}
           onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors"
         />
       </div>
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">Phone *</label>
+        <label className="block text-sm text-gray-600 mb-2">Phone *</label>
         <input
           type="tel"
           required
           value={formData.phone}
           onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors"
         />
       </div>
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">Resume *</label>
+        <label className="block text-sm text-gray-600 mb-2">Resume *</label>
         <input
           type="file"
           accept=".pdf,.doc,.docx"
           onChange={handleFileUpload}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#B5E12A] file:text-[#0D1F1A] hover:file:bg-[#A3D01F]"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors file:mr-4 file:py-1 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#B5E12A] file:text-[#0D1F1A] hover:file:bg-[#A3D01F]"
         />
         {uploading && <p className="text-xs text-[#A8B8B0] mt-1">Uploading...</p>}
         {formData.resumeUrl && (
@@ -337,30 +337,30 @@ function ApplicationForm({ jobId, jobTitle, csrfToken }: { jobId: string; jobTit
         )}
       </div>
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">Cover Letter</label>
+        <label className="block text-sm text-gray-600 mb-2">Cover Letter</label>
         <textarea
           value={formData.coverLetter}
           onChange={(e) => setFormData(prev => ({ ...prev, coverLetter: e.target.value }))}
           rows={4}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors resize-none"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors resize-none"
         />
       </div>
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">LinkedIn URL</label>
+        <label className="block text-sm text-gray-600 mb-2">LinkedIn URL</label>
         <input
           type="url"
           value={formData.linkedinUrl}
           onChange={(e) => setFormData(prev => ({ ...prev, linkedinUrl: e.target.value }))}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors"
         />
       </div>
       <div>
-        <label className="block text-sm text-[#A8B8B0] mb-2">Portfolio URL</label>
+        <label className="block text-sm text-gray-600 mb-2">Portfolio URL</label>
         <input
           type="url"
           value={formData.portfolioUrl}
           onChange={(e) => setFormData(prev => ({ ...prev, portfolioUrl: e.target.value }))}
-          className="w-full bg-[#0D1F1A] border border-[#1A6B55]/30 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-[#B5E12A] transition-colors"
+          className="w-full bg-white border border-gray-300 rounded-lg px-4 py-2 text-black focus:outline-none focus:border-[#B5E12A] transition-colors"
         />
       </div>
       <button
