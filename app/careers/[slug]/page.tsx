@@ -6,6 +6,8 @@ interface PageProps {
   params: { slug: string }
 }
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/jobs/${params.slug}`, {
     cache: 'no-store'
