@@ -7,7 +7,13 @@ export async function GET(request: Request) {
   try {
     const session = await auth()
     if (!session) {
+      console.error('Download failed: No session found')
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    if (session.user?.role !== 'ADMIN') {
+      console.error('Download failed: User is not admin', session.user?.role)
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 })
     }
 
     const { searchParams } = new URL(request.url)
@@ -18,7 +24,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "URL is required" }, { status: 400 })
     }
 
-    console.log('Attempting to download from:', url)
+    console.log('Attempting to download from:', url, 'for user:', session.user?.email)
 
     // Fetch the file from Cloudinary with proper headers
     const response = await fetch(url, {
