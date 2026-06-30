@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 import CareersClient from './CareersClient'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Careers | Milanova',
   description: 'Join our team and build amazing digital experiences. Explore career opportunities at Milanova.',
