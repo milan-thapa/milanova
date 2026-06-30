@@ -12,11 +12,6 @@ export async function GET() {
 
     const jobs = await prisma.jobPosting.findMany({
       orderBy: { createdAt: "desc" },
-      include: {
-        _count: {
-          select: { applications: true }
-        }
-      }
     })
 
     return NextResponse.json(jobs)

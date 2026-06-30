@@ -250,7 +250,6 @@ export default function AdminCareers() {
                   <span className="bg-gray-100 px-2 py-1 rounded text-xs sm:text-sm">{job.department}</span>
                   <span className="bg-gray-100 px-2 py-1 rounded text-xs sm:text-sm">{job.type.replace('_', ' ')}</span>
                   <span className="text-xs sm:text-sm">{job.location}</span>
-                  <span className="text-xs sm:text-sm">{job._count.applications} applications</span>
                   <span className="text-xs sm:text-sm">{new Date(job.createdAt).toLocaleDateString()}</span>
                 </div>
               </CardContent>
