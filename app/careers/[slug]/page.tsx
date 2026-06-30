@@ -27,6 +27,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       openGraph: {
         title: `${job.title} | Careers | Milanova`,
         description: job.description?.substring(0, 160) || '',
+        url: `https://milanova.com/careers/${job.slug}`,
+        type: 'website',
+        images: [
+          {
+            url: '/images/og-image.jpg',
+            width: 1200,
+            height: 630,
+            alt: job.title,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${job.title} | Careers | Milanova`,
+        description: job.description?.substring(0, 160) || '',
+        images: ['/images/og-image.jpg'],
       },
     }
   } catch (error) {

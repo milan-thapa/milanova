@@ -25,6 +25,33 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     return {
       title: `${project.title} - Milanova`,
       description: project.description,
+      openGraph: {
+        title: `${project.title} - Milanova`,
+        description: project.description,
+        url: `https://milanova.com/projects/${project.slug}`,
+        type: 'website',
+        images: project.coverImage || project.mockupImage ? [
+          {
+            url: project.coverImage || project.mockupImage,
+            width: 1200,
+            height: 630,
+            alt: project.title,
+          },
+        ] : [
+          {
+            url: '/images/og-image.jpg',
+            width: 1200,
+            height: 630,
+            alt: project.title,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${project.title} - Milanova`,
+        description: project.description,
+        images: project.coverImage || project.mockupImage ? [project.coverImage || project.mockupImage] : ['/images/og-image.jpg'],
+      },
     }
   } catch (error) {
     return {
