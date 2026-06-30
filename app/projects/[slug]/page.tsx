@@ -10,6 +10,8 @@ interface ProjectPageProps {
   }
 }
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://milanova.vercel.app'
   
