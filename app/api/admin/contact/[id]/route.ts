@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
 import { logError } from '@/lib/logger'
 
+export const dynamic = 'force-dynamic'
+
 // DELETE contact submission
 export async function DELETE(
   request: Request,

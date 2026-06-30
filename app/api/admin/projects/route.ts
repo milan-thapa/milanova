@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma"
 import { projectSchema } from "@/lib/validations/project"
 import { logError } from "@/lib/logger"
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const session = await auth()

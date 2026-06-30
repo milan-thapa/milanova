@@ -11,7 +11,7 @@ export default function ProjectsPage() {
   return (
     <main>
       <ProjectHero />
-      <section id="projects" className="py-20 sm:py-24 md:py-32 bg-white">
+      <section id="projects" className="py-8 sm:py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <ProjectGrid />
         </div>

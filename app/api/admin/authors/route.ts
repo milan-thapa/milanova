@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
 import { logError } from '@/lib/logger'
 
+export const dynamic = 'force-dynamic'
+
 // GET all authors
 export async function GET() {
   try {

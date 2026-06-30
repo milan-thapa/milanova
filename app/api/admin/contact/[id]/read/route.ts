@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
 import { logError } from '@/lib/logger'
 
+export const dynamic = 'force-dynamic'
+
 // PUT mark contact submission as read
 export async function PUT(
   request: Request,
