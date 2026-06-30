@@ -6,7 +6,6 @@ import { LayoutDashboard, FolderKanban, FileText, MessageSquare, HelpCircle, Mai
 import { Button } from '@/components/ui/button'
 import { signOutAction } from '@/app/admin/actions'
 import { useState, useEffect } from 'react'
-import { auth } from '@/lib/auth'
 import Image from 'next/image'
 
 const navItems = [
@@ -34,9 +33,16 @@ export default function AdminSidebar() {
 
   useEffect(() => {
     async function fetchUser() {
-      const session = await auth()
-      if (session?.user?.image) {
-        setUserImage(session.user.image)
+      try {
+        const response = await fetch('/api/admin/settings/profile')
+        if (response.ok) {
+          const data = await response.json()
+          if (data?.image) {
+            setUserImage(data.image)
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user image:', error)
       }
     }
     fetchUser()
