@@ -19,7 +19,11 @@ interface Job {
   type: JobType
   experience: string
   department: string
+  salary?: string
+  isActive: boolean
+  isFeatured: boolean
   createdAt: string
+  updatedAt: string
 }
 
 interface JobDetailClientProps {
