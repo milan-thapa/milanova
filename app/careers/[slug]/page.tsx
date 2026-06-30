@@ -23,13 +23,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
       title: `${job.title} | Careers | Milanova`,
-      description: job.description,
+      description: job.description?.substring(0, 160) || '',
       openGraph: {
         title: `${job.title} | Careers | Milanova`,
-        description: job.description,
+        description: job.description?.substring(0, 160) || '',
       },
     }
   } catch (error) {
+    console.error('Error generating job metadata:', error)
     return {
       title: 'Job Not Found | Milanova'
     }
