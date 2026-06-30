@@ -83,8 +83,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     })
 
     if (!project) {
+      console.error('Project not found:', params.slug)
       notFound()
     }
+
+    console.log('Project found:', project.title)
 
   return (
     <main className="min-h-screen bg-white">
@@ -193,11 +196,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     </main>
   )
   } catch (error) {
+    console.error('Project page error:', error)
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Database Not Configured</h1>
-          <p className="text-lg text-gray-600">Please set up your database to view project details.</p>
+          <h1 className="text-4xl font-bold mb-4">Error Loading Project</h1>
+          <p className="text-lg text-gray-600">An error occurred while loading this project. Please try again later.</p>
+          <p className="text-sm text-gray-500 mt-2">Error: {error instanceof Error ? error.message : 'Unknown error'}</p>
         </div>
       </main>
     )
