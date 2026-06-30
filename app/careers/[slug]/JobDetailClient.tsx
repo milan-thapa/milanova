@@ -22,8 +22,8 @@ interface Job {
   salary: string | null
   isActive: boolean
   isFeatured: boolean
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 interface JobDetailClientProps {
