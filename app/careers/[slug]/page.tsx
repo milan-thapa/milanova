@@ -33,16 +33,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function JobDetailPage({ params }: PageProps) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/jobs/${params.slug}`, {
-    cache: 'no-store'
-  })
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/jobs/${params.slug}`, {
+      cache: 'no-store'
+    })
 
-  if (!res.ok) {
+    if (!res.ok) {
+      notFound()
+    }
+
+    const data = await res.json()
+    const job = data.job
+
+    return <JobDetailClient job={job} />
+  } catch (error) {
+    console.error('Job detail page error:', error)
     notFound()
   }
-
-  const data = await res.json()
-  const job = data.job
-
-  return <JobDetailClient job={job} />
 }
