@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Mail, Phone, Calendar, Search, Trash2, Check, Download } from 'lucide-react'
 import { toast } from 'sonner'
 import { ContactSkeleton } from '@/components/shared/Skeleton'
+import { ConfirmDialog } from '@/components/admin/ConfirmDialog'
 
 interface ContactSubmission {
   id: string
@@ -25,6 +26,8 @@ export default function AdminContact() {
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [filterStatus, setFilterStatus] = useState<'all' | 'unread' | 'read'>('all')
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [submissionToDelete, setSubmissionToDelete] = useState<string | null>(null)
 
   useEffect(() => {
     fetchSubmissions()
@@ -60,18 +63,26 @@ export default function AdminContact() {
   }
 
   const deleteSubmission = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this submission?')) return
+    setSubmissionToDelete(id)
+    setDeleteDialogOpen(true)
+  }
+
+  const confirmDelete = async () => {
+    if (!submissionToDelete) return
     
     try {
-      const response = await fetch(`/api/admin/contact/${id}`, {
+      const response = await fetch(`/api/admin/contact/${submissionToDelete}`, {
         method: 'DELETE'
       })
       if (response.ok) {
-        setSubmissions(submissions.filter(s => s.id !== id))
+        setSubmissions(submissions.filter(s => s.id !== submissionToDelete))
         toast.success('Submission deleted')
       }
     } catch (error) {
       toast.error('Failed to delete submission')
+    } finally {
+      setDeleteDialogOpen(false)
+      setSubmissionToDelete(null)
     }
   }
 
@@ -125,9 +136,10 @@ export default function AdminContact() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <AdminSidebar />
-      <main className="flex-1 ml-0 lg:ml-64 xl:ml-72 p-4 sm:p-6 lg:p-8">
+    <>
+      <div className="flex min-h-screen bg-gray-50">
+        <AdminSidebar />
+        <main className="flex-1 ml-0 lg:ml-64 xl:ml-72 p-4 sm:p-6 lg:p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Contact Submissions</h1>
           <p className="text-gray-600 mt-2">View and manage messages from your contact form</p>
@@ -271,5 +283,16 @@ export default function AdminContact() {
         </div>
       </main>
     </div>
+
+    <ConfirmDialog
+      open={deleteDialogOpen}
+      onOpenChange={setDeleteDialogOpen}
+      title="Delete Contact Submission"
+      description="Are you sure you want to delete this submission? This action cannot be undone."
+      onConfirm={confirmDelete}
+      confirmText="Delete"
+      cancelText="Cancel"
+    />
+    </>
   )
 }

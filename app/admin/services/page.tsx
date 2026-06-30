@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trash2, Plus, Edit2 } from "lucide-react"
+import { ConfirmDialog } from "@/components/admin/ConfirmDialog"
 
 export default function AdminServices() {
   const [services, setServices] = useState<any[]>([])
@@ -15,6 +16,8 @@ export default function AdminServices() {
   const [message, setMessage] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingId, setEditingId] = useState<string | null>(null)
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [serviceToDelete, setServiceToDelete] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -98,20 +101,28 @@ export default function AdminServices() {
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this service?')) return
+    setServiceToDelete(id)
+    setDeleteDialogOpen(true)
+  }
+
+  const confirmDelete = async () => {
+    if (!serviceToDelete) return
 
     try {
-      const res = await fetch(`/api/admin/services?id=${id}`, {
+      const res = await fetch(`/api/admin/services?id=${serviceToDelete}`, {
         method: 'DELETE',
       })
 
       if (!res.ok) throw new Error('Failed to delete')
 
-      setServices(services.filter(s => s.id !== id))
+      setServices(services.filter(s => s.id !== serviceToDelete))
       setMessage('Service deleted successfully!')
     } catch (error) {
       setMessage('Failed to delete service')
       console.error(error)
+    } finally {
+      setDeleteDialogOpen(false)
+      setServiceToDelete(null)
     }
   }
 
@@ -338,5 +349,16 @@ export default function AdminServices() {
         </Card>
       </main>
     </div>
+
+    <ConfirmDialog
+      open={deleteDialogOpen}
+      onOpenChange={setDeleteDialogOpen}
+      title="Delete Service"
+      description="Are you sure you want to delete this service? This action cannot be undone."
+      onConfirm={confirmDelete}
+      confirmText="Delete"
+      cancelText="Cancel"
+    />
+    </>
   )
 }

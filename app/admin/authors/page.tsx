@@ -10,6 +10,7 @@ import { Plus, Edit, Trash2, Mail } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ImageUpload } from '@/components/admin/ImageUpload'
 import NextImage from 'next/image'
+import { ConfirmDialog } from '@/components/admin/ConfirmDialog'
 
 interface Author {
   id: string
@@ -33,6 +34,8 @@ export default function AuthorsPage() {
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editingAuthor, setEditingAuthor] = useState<Author | null>(null)
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [authorToDelete, setAuthorToDelete] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     slug: '',
@@ -116,10 +119,15 @@ export default function AuthorsPage() {
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this author?')) return
+    setAuthorToDelete(id)
+    setDeleteDialogOpen(true)
+  }
+
+  const confirmDelete = async () => {
+    if (!authorToDelete) return
 
     try {
-      const response = await fetch(`/api/admin/authors/${id}`, {
+      const response = await fetch(`/api/admin/authors/${authorToDelete}`, {
         method: 'DELETE'
       })
 
@@ -128,6 +136,9 @@ export default function AuthorsPage() {
       }
     } catch (error) {
       console.error('Error deleting author:', error)
+    } finally {
+      setDeleteDialogOpen(false)
+      setAuthorToDelete(null)
     }
   }
 
@@ -153,9 +164,10 @@ export default function AuthorsPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <AdminSidebar />
-      <main className="flex-1 ml-0 lg:ml-64 xl:ml-72 p-4 sm:p-6 lg:p-8">
+    <>
+      <div className="flex min-h-screen bg-gray-50">
+        <AdminSidebar />
+        <main className="flex-1 ml-0 lg:ml-64 xl:ml-72 p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold">Authors</h1>
           <Button onClick={() => setShowForm(true)} className="gap-2 w-full sm:w-auto">
@@ -354,5 +366,16 @@ export default function AuthorsPage() {
       </div>
       </main>
     </div>
+
+    <ConfirmDialog
+      open={deleteDialogOpen}
+      onOpenChange={setDeleteDialogOpen}
+      title="Delete Author"
+      description="Are you sure you want to delete this author? This action cannot be undone."
+      onConfirm={confirmDelete}
+      confirmText="Delete"
+      cancelText="Cancel"
+    />
+    </>
   )
 }

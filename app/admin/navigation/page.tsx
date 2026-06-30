@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Trash2, Plus, Edit2, X } from "lucide-react"
+import { ConfirmDialog } from "@/components/admin/ConfirmDialog"
 
 export default function AdminNavigation() {
   const [links, setLinks] = useState<any[]>([])
@@ -15,6 +16,8 @@ export default function AdminNavigation() {
   const [message, setMessage] = useState('')
   const [showAddForm, setShowAddForm] = useState(false)
   const [editingId, setEditingId] = useState<string | null>(null)
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [linkToDelete, setLinkToDelete] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     href: '',
@@ -104,20 +107,28 @@ export default function AdminNavigation() {
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this link?')) return
+    setLinkToDelete(id)
+    setDeleteDialogOpen(true)
+  }
+
+  const confirmDelete = async () => {
+    if (!linkToDelete) return
 
     try {
-      const res = await fetch(`/api/admin/navigation?id=${id}`, {
+      const res = await fetch(`/api/admin/navigation?id=${linkToDelete}`, {
         method: 'DELETE',
       })
 
       if (!res.ok) throw new Error('Failed to delete')
 
-      setLinks(links.filter(l => l.id !== id))
+      setLinks(links.filter(l => l.id !== linkToDelete))
       setMessage('Link deleted successfully!')
     } catch (error) {
       setMessage('Failed to delete link')
       console.error(error)
+    } finally {
+      setDeleteDialogOpen(false)
+      setLinkToDelete(null)
     }
   }
 
@@ -148,9 +159,10 @@ export default function AdminNavigation() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <AdminSidebar />
-      <main className="flex-1 ml-64 p-8">
+    <>
+      <div className="flex min-h-screen bg-gray-50">
+        <AdminSidebar />
+        <main className="flex-1 ml-64 p-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Navigation</h1>
           <p className="text-gray-600 mt-2">Manage navbar navigation links</p>
@@ -329,5 +341,16 @@ export default function AdminNavigation() {
         </Card>
       </main>
     </div>
+
+    <ConfirmDialog
+      open={deleteDialogOpen}
+      onOpenChange={setDeleteDialogOpen}
+      title="Delete Navigation Link"
+      description="Are you sure you want to delete this link? This action cannot be undone."
+      onConfirm={confirmDelete}
+      confirmText="Delete"
+      cancelText="Cancel"
+    />
+    </>
   )
 }
