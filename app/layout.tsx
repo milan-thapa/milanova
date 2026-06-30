@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Milanova",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Milanova - Digital Solutions for Every Mission-Driven Team",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Milanova - Digital Solutions for Every Mission-Driven Team",
     description: "Nepal's leading web development company. eCommerce, Web Development, SaaS Development, and UI/UX Design services.",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/og-image.png"],
     creator: "@milanova",
   },
   icons: {

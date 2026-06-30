@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
           },
         ] : [
           {
-            url: '/images/og-image.jpg',
+            url: '/images/og-image.png',
             width: 1200,
             height: 630,
             alt: project.title,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
         card: 'summary_large_image',
         title: `${project.title} - Milanova`,
         description: project.description,
-        images: project.coverImage || project.mockupImage ? [project.coverImage || project.mockupImage] : ['/images/og-image.jpg'],
+        images: project.coverImage || project.mockupImage ? [project.coverImage || project.mockupImage] : ['/images/og-image.png'],
       },
     }
   } catch (error) {

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         type: 'website',
         images: [
           {
-            url: '/images/og-image.jpg',
+            url: '/images/og-image.png',
             width: 1200,
             height: 630,
             alt: job.title,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         card: 'summary_large_image',
         title: `${job.title} | Careers | Milanova`,
         description: job.description?.substring(0, 160) || '',
-        images: ['/images/og-image.jpg'],
+        images: ['/images/og-image.png'],
       },
     }
   } catch (error) {
